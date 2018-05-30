@@ -13,6 +13,7 @@
     <script src="codemirror/lib/codemirror.js"></script>
     <link rel="stylesheet" href="codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="codemirror/theme/eclipse.css">
+    <link rel="stylesheet" href="codemirror/theme/crystal.css">
     <script src="codemirror/mode/python/python.js"></script>
 
     <title>CodeUp</title>
@@ -21,18 +22,50 @@
     body {
     	background-color: #eee;
     }
+
+    /* Two column spaces for tutor and tutee. */
     .column {
         float: left;
         width: 50%;
+        padding-left: 20px;
+        /* resize: vertical;
+        overflow: auto; */
     }
 
-    /* Clear floats after the columns */
+    .CodeMirror {
+      resize: vertical;
+      overflow: auto;
+    }
+
     .row:after {
         content: "";
         display: table;
         clear: both;
     }
+
+    .navbar {
+      margin-bottom: 0px;
+    }
+
+    .h3 {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    @media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
     </style>
+    <!-- <script type="text/javascript" charset="utf-8">
+      $(function() {
+        $("#codeeditor").resizable({
+            alsoResize: "#codeeditor2"});
+        $("#codeeditor2").resizable({
+            alsoResize: "#codeeditor"});
+          });
+    </script> -->
   </head>
 
   <body>
@@ -62,7 +95,9 @@
       </nav>
 
       <div class="row">
-      <div class="column" id="codeeditor"></div>
+      <div class="column" id="codeeditor">
+        <h3>Tutee</h3>
+      </div>
       <script>
 
       var editor = CodeMirror(document.getElementById("codeeditor"), {
@@ -76,13 +111,15 @@
       });
       editor.setSize(null, 700);
       </script>
-      <div class="column" id="codeeditor2"></div>
+      <div class="column" id="codeeditor2">
+        <h3>Tutor</h3>
+      </div>
       <script>
 
       var editor = CodeMirror(document.getElementById("codeeditor2"), {
-        value: "aaa",
+        value: "hello",
         mode: "python",
-        theme: "eclipse",
+        theme: "crystal",
         tabSize: 4,
         lineNumbers: true,
         firstLineNumber: 1,
