@@ -10,26 +10,72 @@
     <link rel="stylesheet" href="../CSS/code.css" />
 
     <!-- Code Mirror -->
-    <script src="codemirror/lib/codemirror.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <!-- CodeMirror and its JavaScript mode file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/javascript/javascript.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+
+    <!-- Firepad -->
+    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+    <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+    <!-- <script src="codemirror/lib/codemirror.js"></script>
     <link rel="stylesheet" href="codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="codemirror/theme/eclipse.css">
     <link rel="stylesheet" href="codemirror/theme/crystal.css">
-    <script src="codemirror/mode/python/python.js"></script>
+    <script src="codemirror/mode/python/python.js"></script> -->
 
     <title>CodeUp</title>
 
     <style>
-    body {
+    /* body {
     	background-color: #eee;
+    } */
+
+    /* Two column spaces for tutor and tutee. */
+
+    html { height: 100%; }
+    body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
+    /* Height / width / positioning can be customized for your use case.
+       For demo purposes, we make firepad fill the entire browser. */
+    #firepad-container1 {
+      width: 50%;
+      height: 100%;
+    }
+
+    #firepad-container2 {
+      width: 50%;
+      height: 100%;
+    }
+
+    #firepad-container {
+      height: 100%;
     }
 
     /* Two column spaces for tutor and tutee. */
     .column {
+      flex: 50%;
+        float: left;
+        width: 50%;
+        padding-left: 20px; */
+        /* resize: vertical;
+        overflow: auto;
+    }
+
+    .row {
+      display: flex;
+        /* content: "";
+        clear: both; */
+    }
+
+    /* .column {
         float: left;
         width: 50%;
         padding-left: 20px;
-        /* resize: vertical;
-        overflow: auto; */
+        resize: vertical;
+        overflow: auto;
     }
 
     .CodeMirror {
@@ -41,7 +87,7 @@
         content: "";
         display: table;
         clear: both;
-    }
+    } */
 
     .navbar {
       margin-bottom: 0px;
@@ -68,7 +114,7 @@
     </script> -->
   </head>
 
-  <body>
+  <body onload="init()">
 
       <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -94,41 +140,107 @@
           </div><!-- /.container-fluid -->
       </nav>
 
-      <div class="row">
-      <div class="column" id="codeeditor">
+      <div class="row" id="firepad-container">
+      <div class="column" id="firepad-container1">
         <h3>Tutee</h3>
       </div>
-      <script>
-
-      var editor = CodeMirror(document.getElementById("codeeditor"), {
-        value: "",
-        mode: "python",
-        theme: "eclipse",
-        tabSize: 4,
-        lineNumbers: true,
-        firstLineNumber: 1,
-        extraKeys: {"Ctrl-Space": "autocomplete"}
-      });
-      editor.setSize(null, 700);
-      </script>
-      <div class="column" id="codeeditor2">
+      <div class="column" id="firepad-container2">
         <h3>Tutor</h3>
       </div>
-      <script>
-
-      var editor = CodeMirror(document.getElementById("codeeditor2"), {
-        value: "hello",
-        mode: "python",
-        theme: "crystal",
-        tabSize: 4,
-        lineNumbers: true,
-        firstLineNumber: 1,
-        extraKeys: {"Ctrl-Space": "autocomplete"},
-        readOnly: true
-      });
-        editor.setSize(null, 700);
-      </script>
       </div>
+
+      <script>
+        function init1() {
+          //// Initialize Firebase.
+          //// TODO: replace with your Firebase project configuration.
+          var config = {
+            apiKey: "AIzaSyAZCsIV66dGFDmLTA5I8XX_JycfRP0Md8E",
+            authDomain: "codeup-1264f.firebaseapp.com",
+            databaseURL: "https://codeup-1264f.firebaseio.com",
+          };
+          firebase.initializeApp(config);
+
+          //// Get Firebase Database reference.
+          var firepadRef = getExampleRef();
+
+          //// Create CodeMirror (with line numbers and the JavaScript mode).
+          var codeMirror = CodeMirror(document.getElementById('firepad-container1'), {
+            lineNumbers: true,
+            mode: 'javascript'
+          });
+          //// Create Firepad.
+          var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+            defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+          });
+        }
+
+        // Helper to get hash from end of URL or generate a random one.
+        function getExampleRef() {
+          var ref = firebase.database().ref();
+          var hash = window.location.hash.replace(/#/g, '');
+          if (hash) {
+            ref = ref.child(hash);
+          } else {
+            ref = ref.push(); // generate unique location.
+            window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
+          }
+          if (typeof console !== 'undefined') {
+            console.log('Firebase data: ', ref.toString());
+          }
+          return ref;
+        }
+      </script>
+
+
+      <script>
+        function init2() {
+          //// Initialize Firebase.
+          //// TODO: replace with your Firebase project configuration.
+          var config = {
+            apiKey: "AIzaSyCjY36-Dz6ONVIKVeg4_ScJo69hZWoNpxo",
+            authDomain: "codeup2.firebaseapp.com",
+            databaseURL: "https://codeup2.firebaseio.com",
+
+          };
+          var app2 = firebase.initializeApp(config, "a");
+          console.log(app2.name);
+
+          //// Get Firebase Database reference.
+          var firepadRef = getExampleRef2(app2);
+
+          //// Create CodeMirror (with line numbers and the JavaScript mode).
+          var codeMirror = CodeMirror(document.getElementById('firepad-container2'), {
+            lineNumbers: true,
+            mode: 'javascript'
+          });
+
+          //// Create Firepad.
+          var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+            defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+          });
+        }
+
+        // Helper to get hash from end of URL or generate a random one.
+        function getExampleRef2(app) {
+          var ref = firebase.database(app).ref();
+          var hash = window.location.hash.replace(/#/g, '');
+          if (hash) {
+            ref = ref.child(hash);
+          } else {
+            ref = ref.push(); // generate unique location.
+            window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
+          }
+          if (typeof console !== 'undefined') {
+            console.log('Firebase data: ', ref.toString());
+          }
+          return ref;
+        }
+
+        function init() {
+          init1();
+          init2();
+        }
+      </script>
 
 
     <!-- Optional JavaScript -->
