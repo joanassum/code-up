@@ -1,2 +1,22 @@
-job1:
-  script: "echo \"script to be added\""
+stages:
+  - build
+  - test
+  - deploy_staging_server
+
+build:
+  stage: build
+  script:
+    - echo "building"
+
+test:
+  stage: test
+  script:
+    - echo "testing"
+
+deploy:
+  stage: deploy_staging_server
+  script:
+    - pwd
+    - scp -o StrictHostKeyChecking=no -r /home/gitlab-runner/builds/1ba80d12/0/mwt16/code-up/ mwt16@cloud-vm-45-119.doc.ic.ac.uk:homedir/code-up/
+  only:
+    - master
