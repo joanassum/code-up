@@ -17,6 +17,6 @@ deploy:
   stage: deploy_staging_server
   script:
     - pwd
-    - scp -o StrictHostKeyChecking=no -r [!.]* /home/gitlab-runner/builds/1ba80d12/0/g1727138/code-up mwt16@cloud-vm-45-119.doc.ic.ac.uk:/home/mwt16/homedir
+    - scp -o StrictHostKeyChecking=no -r /home/gitlab-runner/builds/1ba80d12/0/g1727138/code-up/[!.]* mwt16@cloud-vm-45-119.doc.ic.ac.uk:/home/mwt16/homedir
   only:
     - master
