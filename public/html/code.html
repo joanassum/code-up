@@ -73,9 +73,145 @@
       </div>
       </div>
 
+      <div class="row2" id="buttons">
+      <div class="column2" id="button-container1">
+        <button type="submit" value="Compile 1" id='button1'>Compile</button>
+        <h4>Output: </h4>
+        <textarea autofocus readonly id="output-box1">Compile result here&#13;&#10;Press button to try</textarea>
+      </div>
+      <div class="column2" id="button-container2" id='button2'>
+        <button type="submit" value="Compile 2">Compile</button>
+        <h4>Output: </h4>
+        <textarea autofocus readonly id="output-box2">Compile result here&#13;&#10;Press button to try</textarea>
+      </div>
+      </div>
+
+      <script>
+        function init1() {
+          //// Initialize Firebase.
+          //// TODO: replace with your Firebase project configuration.
+          var config = {
+            apiKey: "AIzaSyAZCsIV66dGFDmLTA5I8XX_JycfRP0Md8E",
+            authDomain: "codeup-1264f.firebaseapp.com",
+            databaseURL: "https://codeup-1264f.firebaseio.com",
+          };
+          firebase.initializeApp(config);
+
+          //// Get Firebase Database reference.
+          var firepadRef = getExampleRef();
+
+          //// Create CodeMirror (with line numbers and the JavaScript mode).
+          var codeMirror = CodeMirror(document.getElementById('firepad-container1'), {
+            lineNumbers: true,
+            mode: 'javascript'
+          });
+          //// Create Firepad.
+          var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+            defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+          });
+
+          //get a reference to the element
+          var myBtn1 = document.getElementById('button1');
+
+          //add event listener
+          myBtn1.addEventListener('click', function(event) {
+            var source = codeMirror.getValue();
+            var run_url = 'http://api.hackerearth.com/code/run/';
+            var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
+            // var myText = document.getElementById('output-box1').value = '\u{1F4A9}';
+            var data = {
+              'client_secret': clientSecretKey,
+              'async': 0,
+              'source': source,
+              'lang': "java",
+              'time_limit': 5,
+              'memory_limit': 262144,
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+              if (xhr.readyState == XMLHttpRequest.DONE) {
+                // alert(xhr.responseText);
+                var myText = document.getElementById('output-box1').value = xhr.responseText;
+              }
+            }
+            xhr.open("POST", run_url, true);
+            xhr.withCredentials = true;
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.send(data);
+          });
+        }
+
+        // Helper to get hash from end of URL or generate a random one.
+        function getExampleRef() {
+          var ref = firebase.database().ref();
+          var hash = window.location.hash.replace(/#/g, '');
+          if (hash) {
+            ref = ref.child(hash);
+          } else {
+            ref = ref.push(); // generate unique location.
+            window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
+          }
+          if (typeof console !== 'undefined') {
+            console.log('Firebase data: ', ref.toString());
+          }
+          return ref;
+        }
+      </script>
+
+
+      <script>
+        function init2() {
+          //// Initialize Firebase.
+          //// TODO: replace with your Firebase project configuration.
+          var config = {
+            apiKey: "AIzaSyCjY36-Dz6ONVIKVeg4_ScJo69hZWoNpxo",
+            authDomain: "codeup2.firebaseapp.com",
+            databaseURL: "https://codeup2.firebaseio.com",
+
+          };
+          var app2 = firebase.initializeApp(config, "a");
+          console.log(app2.name);
+
+          //// Get Firebase Database reference.
+          var firepadRef = getExampleRef2(app2);
+
+          //// Create CodeMirror (with line numbers and the JavaScript mode).
+          var codeMirror = CodeMirror(document.getElementById('firepad-container2'), {
+            lineNumbers: true,
+            mode: 'javascript'
+          });
+
+          //// Create Firepad.
+          var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+            defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+          });
+        }
+
+        // Helper to get hash from end of URL or generate a random one.
+        function getExampleRef2(app) {
+          var ref = firebase.database(app).ref();
+          var hash = window.location.hash.replace(/#/g, '');
+          if (hash) {
+            ref = ref.child(hash);
+          } else {
+            ref = ref.push(); // generate unique location.
+            window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
+          }
+          if (typeof console !== 'undefined') {
+            console.log('Firebase data: ', ref.toString());
+          }
+          return ref;
+        }
+
+        function init() {
+          init1();
+          init2();
+        }
+      </script>
+
 
     <!-- Optional JavaScript -->
-    <script src=../js/code.js></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
