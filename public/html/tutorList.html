@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/tutorList.css" />
     <link rel="stylesheet" href="../css/chatbox.css" />
+
+    <!-- font-awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
 
@@ -39,20 +42,94 @@
       </nav>
 
       <!-- Tutor List -->
-      <div id="100">
-          <span>YeJin Seo</span>
-          <a class="btn contact">Contact</a>
-          <a class="btn" href="/code">Code Up!</a>
-      </div>
+      <div class="container">
+        <div class="row">
+            <div class="col-sm-3 hidden-xs">
+                <div class="list-group">
+                    <a href="#" class="list-group-item">JAVA</a>
+                    <a href="#" class="list-group-item">- Python</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        <label class="control-label" for="input-sort">Sort By:</label>
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        <select id="input-sort" class="form-control">
+                        <option value="" selected="selected">Default</option>
+                        <option value="">Name</option>
+                        <option value="">Date</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-1 text-right">
+                        <label class="control-label" for="input-limit">Show:</label>
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <select id="input-limit" class="form-control">
+                        <option value="" selected="selected">9</option>
+                        <option value="">15</option>
+                        <option value="">25</option>
+                        <option value="">50</option>
+                        <option value="">100</option>
+                      </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <!-- Product Item -->
+                    <div class="product-list col-md-12">
+                        <div class="product-item">
+                            <div class="item-overlay">
+                                <div class="clickable">
+                                    <a href="#">Alivs Lee</a>
+                                </div>
+                            </div>
+                            <div class="image">
+                                <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Product 1"></a>
+                            </div>
+                            <div class="caption">
+                              <div class="name">
+                                  <a href="#">Alvis Lee</a>
+                              </div>
+                              <div class="description">
+                                  <p>Teaches how to sewar in Cantonese fluently. Also teach how to count very long wordsvery long wordsvery long (the description can be this long including this text)</p>
+                              </div>
+                              <div class="rating">
+                                  <i class="fa fa-star fa-lg"></i>
+                                  <i class="fa fa-star fa-lg"></i>
+                                  <i class="fa fa-star fa-lg"></i>
+                                  <i class="fa fa-star fa-lg"></i>
+                                  <i class="fa fa-star-o fa-lg"></i>
+                              </div>
+                              <div class="price">
+                                  <span>$4/hour</span>
+                              </div>
+                              <div class="row">
+                                <div class="col-xs-12 col-sm-2">
+                                  <div id="100">
+                                      <span style="display:none">Alvis Lee</span>
+                                      <button type="button" class="btn contact btn-success">Contact</button>
+                                  </div>
+                                </div>
+                                <div class="col-xs-12 col-md-2">
+                                  <a href="code.html"><button type="button" class="btn btn-success">Code Up!</button></a>
+                                </div>
+                              </div>
+                              <div class="row">
 
-      <div id="101">
-          <span>Joan Tso</span>
-          <a class="btn contact">Contact</a>
-          <a class="btn" href="/code">Code Up!</a>
-      </div>
+                              </div class="row">
+                            </div>
+                          </div>
+                    </div>
+                    <!--/ Product Item -->
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
       <!-- Link to TutorList javascript -->
       <script src="../js/chatbox.js"></script>
   </body>
