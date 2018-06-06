@@ -45,17 +45,20 @@ app.get('/login', function(req, res){
     // Query database for user and password
     const query = "SELECT DISTINCT username, password FROM users WHERE username = '" + req.query.username + "'";
 
-    pool.query(query, (err, result) => {
+    pool.query(query, (accessErr, accessResult) => {
         // If username is not in database ...
-        if (result.rowCount == 0) {
+        if (accessResult.rowCount == 0) {
             // ... Reload login page
             res.sendFile(html_dir + 'login.html');
         // If username and password is correct ...
-        } else if (result.rows[0].password === req.query.password) {
+      } else if (accessResult.rows[0].password === req.query.password) {
             //... Load tutor page
-            res.render('pages/tutorList', {
-                username: req.query.username,
-                users: [{name: 'Amelie'}, {name: 'alvis'}]
+            const listQuery = "SELECT * FROM tutorlist";
+            pool.query(listQuery, (listErr, listResult) => {
+              res.render('pages/tutorList', {
+                  username: req.query.username,
+                  tutors: listResult.rows
+              });
             });
 
         // Otherwise, password is incorrect ...
