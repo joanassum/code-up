@@ -12,7 +12,8 @@
     <!-- Code Mirror -->
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <!-- CodeMirror and its JavaScript mode file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/javascript/javascript.js"></script>
@@ -107,39 +108,93 @@
           });
           //// Create Firepad.
           var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-            defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+            defaultText: 'public class Main{\n  public static void main(String[] args) {\n    System.out.println(\"abc\");\n  }\n}'
           });
 
           //get a reference to the element
           var myBtn1 = document.getElementById('button1');
 
-          //add event listener
           myBtn1.addEventListener('click', function(event) {
-            var source = codeMirror.getValue();
-            var run_url = 'http://api.hackerearth.com/code/run/';
-            var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
-            // var myText = document.getElementById('output-box1').value = '\u{1F4A9}';
-            var data = {
-              'client_secret': clientSecretKey,
-              'async': 0,
-              'source': source,
-              'lang': "java",
-              'time_limit': 5,
-              'memory_limit': 262144,
-            }
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-              if (xhr.readyState == XMLHttpRequest.DONE) {
-                // alert(xhr.responseText);
-                var myText = document.getElementById('output-box1').value = xhr.responseText;
+            console.log('clicked');
+
+            var data = {data: codeMirror.getValue()};
+            console.log(JSON.stringify(data));
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("output-box1").value = this.responseText;
               }
-            }
-            xhr.open("POST", run_url, true);
-            xhr.withCredentials = true;
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("Accept", "application/json");
-            xhr.send(data);
+            };
+            xhttp.open("POST", "/compile", true);
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhttp.send(JSON.stringify(data));
           });
+
+          // $("#button1").click(function(e) {
+          //   var source = codeMirror.getValue();
+          //   var run_url = 'http://api.hackerearth.com/code/run';
+          //   var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
+          //   console.log('clicked');
+          //   e.preventDefault();
+          //   $.ajax(this.href, {
+          //     method: 'POST',
+  				// 		data: source,
+  				//     contentType: 'application/json',
+          //     headers: {
+          //           'Access-Control-Allow-Origin': '*'
+          //       },
+          //     url: run_url,
+          //     success: function(data) {
+          //         console.log('success');
+          //         console.log(JSON.stringify(data));
+          //       }
+          //   });
+          // });
+
+          // myBtn1.addEventListener('click', function(event) {
+          //   var source = codeMirror.getValue();
+          //   var run_url = 'http://api.hackerearth.com/code/run';
+          //   var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
+          //   $.ajax({
+						// method: 'POST',
+						// data: source,
+				    // contentType: 'application/json',
+            // url: run_url,
+            // success: function(data) {
+            //     console.log('success');
+            //     console.log(JSON.stringify(data));
+            //   }
+          //   });
+          // });
+
+          // //add event listener
+          // myBtn1.addEventListener('click', function(event) {
+          //   var source = codeMirror.getValue();
+          //   var run_url = 'http://api.hackerearth.com/code/run/';
+          //   var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
+          //   // var myText = document.getElementById('output-box1').value = '\u{1F4A9}';
+          //   var data = {
+          //     'client_secret': clientSecretKey,
+          //     'async': 0,
+          //     'source': source,
+          //     'lang': "java",
+          //     'time_limit': 5,
+          //     'memory_limit': 262144,
+          //   }
+          //   var xhr = new XMLHttpRequest();
+          //   xhr.onreadystatechange = function() {
+          //     if (xhr.readyState == XMLHttpRequest.DONE) {
+          //       // alert(xhr.responseText);
+          //       var myText = document.getElementById('output-box1').value = xhr.responseText;
+          //     }
+          //   }
+          //   xhr.open("POST", run_url, true);
+          //   xhr.withCredentials = true;
+          //   xhr.setRequestHeader("Content-Type", "application/json");
+          //   xhr.setRequestHeader("Accept", "application/json");
+          //   xhr.send(data);
+          // });
         }
 
         // Helper to get hash from end of URL or generate a random one.
@@ -184,7 +239,7 @@
 
           //// Create Firepad.
           var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-            defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+            defaultText: 'public class Main{\n  public static void main(String[] args) {\n    System.out.println(\"abc\");\n  }\n}'
           });
         }
 
@@ -213,7 +268,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>

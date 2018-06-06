@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CodeUp Tutors</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/tutorList.css" />
+    <link rel="stylesheet" href="../css/chatbox.css" />
+
+  </head>
+  <body>
+
+      <% include ../partials/header %>
+
+
+      <!-- Tutor List -->
+      <% users.forEach(function(user) { %>
+          <div id="<%= user.name %>">
+              <span><%= user.name %></span>
+              <a class="btn contact">Contact</a>
+              <a class="btn" href="/code">Code Up!</a>
+          </div>
+      <% }); %>
+
+
+
+
+      <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <!-- Socket.io JS -->
+      <script src="/socket.io/socket.io.js"></script>
+      <!-- Link to TutorList javascript -->
+      <script src="../js/chatbox.js"></script>
+  </body>
+</html>

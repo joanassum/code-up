@@ -1,6 +1,14 @@
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io').listen(server);
 const pg = require('pg');
+const request = require('request');
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 // Connect to users database
 const pool = new pg.Pool({
@@ -11,10 +19,18 @@ const pool = new pg.Pool({
     port: '5432'
 });
 
+
+// A dictionary of online users
+const users = {};
+
 const port = 8000;
+server.listen(port);
 
 // Specify to serve files from the public directory
 app.use(express.static(__dirname + '/public'));
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
 // HTML directory
 const html_dir = __dirname + '/public/html/';
@@ -36,8 +52,12 @@ app.get('/login', function(req, res){
             res.sendFile(html_dir + 'login.html');
         // If username and password is correct ...
         } else if (result.rows[0].password === req.query.password) {
-            // ... Load tutor page
-            res.sendFile(html_dir + 'tutorList.html');
+            //... Load tutor page
+            res.render('pages/tutorList', {
+                username: req.query.username,
+                users: [{name: 'Amelie'}, {name: 'alvis'}]
+            });
+
         // Otherwise, password is incorrect ...
         } else {
             // ... Reload login page
@@ -52,6 +72,110 @@ app.get('/code', function(req, res) {
 });
 
 
-app.listen(port, function () {
-  console.log('Example app listening on port ' + port + '!');
+//When "Compile" button is clicked ...
+app.post('/compile', function(req,res) {
+
+  //var data = "public class Main{ public static void main(String[] args) {System.out.println(\"abc\");}}";
+
+  var data = req.body.data;
+
+  var compile_run = require('compile-run');
+  compile_run.runJava(data, "", function (stdout, stderr, err) {
+    if(!err){
+      console.log(stdout);
+      console.log(stderr);
+      res.send(stdout + "\n" + stderr);
+      //res.send(stderr);
+    } else{
+      res.send(err);
+      console.log(err);
+    }
+  });
+//   var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
+//   //var api = new HackerEarthAPI(clientSecretKey);
+//   //var data = "print 'Hello World'";
+//   console.log('passed to server');
+//
+//   var source = "print 'Hello World'";
+//   var run_url = 'https://api.hackerearth.com/v3/code/run/';
+//   var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
+//   // var myText = document.getElementById('output-box1').value = '\u{1F4A9}';
+//   var data = {
+//     'client_secret': clientSecretKey,
+//     'async': 0,
+//     'source': source,
+//     'lang': "PYTHON",
+//     'time_limit': 5,
+//     'memory_limit': 262144,
+//   }
+//
+//   var options = {
+//     uri : 'https://api.hackerearth.com/v3/code/run/',
+//     method : 'POST',
+//     headers : { 'Content-Type' : 'application/json' },
+//     form : data
+//   };
+//
+//   request(options, function (error, response, body) {
+//     var parsedResponse;
+//
+//     try {
+//       //parsedResponse = JSON.parse(body);
+//       console.log('requested');
+//       console.log('body' + body + '\n');
+//       console.log('response: \n' + response);
+//     } catch (error) {
+//       console.log('error');
+//       console.log(error);
+//     }
+//
+//     // if (response.statusCode != 200 || parsedResponse.errors) {
+//     //   console.log('Status code: ' + response.statusCode);
+//     //   console.log(parsedResponse.errors);
+//     // }
+  // });
+
+  // api.compile({ source: data, lang: 'PYTHON' }, function (err, data) {
+  //   if (err) {
+  //     console.log("Oh no");
+  //     console.log(err.message);
+  //   } else {
+  //     console.log("Yeah");
+  //     res.contentType('application/json');
+  //     res.send(JSON.stringify(data));
+  //     console.log(JSON.stringify(data)); // Do something with your data
+  //   }
+  // });
+  //
+  // api.run({ source: data, lang: 'PYTHON', time_limit: 1 }, function (err, data) {
+  //   if (err) {
+  //     console.log(err.message);
+  //   } else {
+  //     res.contentType('application/json');
+  //     res.send(JSON.stringify(data));
+  //     console.log(JSON.stringify(data)); // Do something with your data
+  //   }
+  // });
+});
+
+
+
+
+
+
+// Code for chatbox function
+io.sockets.on('connection', function(socket) {
+    socket.on('login', function(data) {
+        socket.username = data;
+        users[socket.username] = socket;
+    });
+
+    socket.on('to server', function(data) {
+        users[data.to].emit('to client', {from: data.from, msg: data.msg});
+    });
+
+    socket.on('disconnect', function() {
+        // Remove the user from the online list
+        delete users[socket.username];
+    });
 });

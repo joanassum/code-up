@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+	// Setup connection
+	let socket = io.connect();
+	socket.emit('login', $('#username').text());
+
 	var arr = []; // List of users
 
 	$(document).on('click', '.msg_head', function() {
@@ -7,7 +11,6 @@ $(document).ready(function(){
 		$('[rel="'+chatbox+'"] .msg_wrap').slideToggle('slow');
 		return false;
 	});
-
 
 	$(document).on('click', '.close', function() {
 		var chatbox = $(this).parents().parents().attr("rel") ;
@@ -20,21 +23,14 @@ $(document).ready(function(){
 	$(document).on('click', '.contact', function() {
 
 		var userID = $(this).parent().attr("id");
-		var username = $(this).prev().text() ;
+		//var username = $(this).prev().text() ;
 
 		if ($.inArray(userID, arr) != -1) {
 			arr.splice($.inArray(userID, arr), 1);
 		}
 
-		arr.unshift(userID);
-		chatPopup = '<div class="msg_box" style="right:270px" rel="'+ userID+'">'+
-					'<div class="msg_head">'+username +
-					'<div class="close">x</div> </div>'+
-					'<div class="msg_wrap"> <div class="msg_body">	<div class="msg_push"></div> </div>'+
-					'<div class="msg_footer"><textarea class="msg_input" rows="4"></textarea></div> 	</div> 	</div>' ;
+		addChatBox(userID);
 
-		$("body").append(chatPopup);
-		displayChatBox();
 	});
 
 
@@ -44,14 +40,26 @@ $(document).ready(function(){
       		$(this).val('');
 
       		if(msg.trim().length != 0) {
-				var chatbox = $(this).parents().parents().parents().attr("rel") ;
-				$('<div class="msg-right">'+msg+'</div>').insertBefore('[rel="'+chatbox+'"] .msg_push');
-				$('.msg_body').scrollTop($('.msg_body')[0].scrollHeight);
+				var userID = $(this).parents().parents().parents().attr("rel") ;
+				$('<div class="msg-right">'+msg+'</div>').insertBefore('[rel="'+userID+'"] .msg_push');
+				// Autoscroll to bottom of chat
+				$(".msg_body").animate({ scrollTop: $(".msg_body")[0].scrollHeight}, 100);
+				// Send message to server
+				socket.emit('to server', {from: $('#username').text(), to: userID, msg: msg});
       		}
         }
     });
 
-
+	// Recieving messages from server
+	socket.on('to client', function(data) {
+		let userID = data.from
+		if (!$('div[rel="' + userID + '"]').length) {
+			addChatBox(userID);
+		}
+		$('<div class="msg-left">'+data.msg+'</div>').insertBefore('[rel="'+userID+'"] .msg_push');
+		// Autoscroll to bottom of chat
+		$(".msg_body").animate({ scrollTop: $(".msg_body")[0].scrollHeight}, 100);
+	});
 
 	function displayChatBox(){
 	    i = 20 ; // start position //270
@@ -67,5 +75,18 @@ $(document).ready(function(){
 			 $('[rel="'+value+'"]').hide();
 		   }
         });
+	}
+
+
+	function addChatBox(userID) {
+		arr.unshift(userID);
+		chatPopup = '<div class="msg_box" style="right:270px" rel="'+ userID+'">'+
+					'<div class="msg_head">'+userID +
+					'<div class="close">x</div> </div>'+
+					'<div class="msg_wrap"> <div class="msg_body">	<div class="msg_push"></div> </div>'+
+					'<div class="msg_footer"><textarea class="msg_input" rows="4"></textarea></div> </div> </div>' ;
+
+		$("body").append(chatPopup);
+		displayChatBox();
 	}
 });
