@@ -68,9 +68,21 @@
       <div class="row" id="firepad-container">
       <div class="column" id="firepad-container1">
         <h3>Tutee</h3>
+        <select id="select-tutee">
+          <option value="C">C</option>
+          <option value="C++">C++</option>
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+        </select>
       </div>
       <div class="column" id="firepad-container2">
         <h3>Tutor</h3>
+        <select id="select-tutor">
+          <option value="C">C</option>
+          <option value="C++">C++</option>
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+        </select>
       </div>
       </div>
 
@@ -80,8 +92,8 @@
         <h4>Output: </h4>
         <textarea autofocus readonly id="output-box1">Compile result here&#13;&#10;Press button to try</textarea>
       </div>
-      <div class="column2" id="button-container2" id='button2'>
-        <button type="submit" value="Compile 2">Compile</button>
+      <div class="column2" id="button-container2">
+        <button type="submit" value="Compile 2" id='button2'>Compile</button>
         <h4>Output: </h4>
         <textarea autofocus readonly id="output-box2">Compile result here&#13;&#10;Press button to try</textarea>
       </div>
@@ -117,7 +129,10 @@
           myBtn1.addEventListener('click', function(event) {
             console.log('clicked');
 
-            var data = {data: codeMirror.getValue()};
+            var e = document.getElementById("select-tutee");
+            console.log(e.options[e.selectedIndex].value);
+
+            var data = {data: codeMirror.getValue(), lang: e.options[e.selectedIndex].value};
             console.log(JSON.stringify(data));
 
             var xhttp = new XMLHttpRequest();
@@ -130,71 +145,6 @@
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xhttp.send(JSON.stringify(data));
           });
-
-          // $("#button1").click(function(e) {
-          //   var source = codeMirror.getValue();
-          //   var run_url = 'http://api.hackerearth.com/code/run';
-          //   var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
-          //   console.log('clicked');
-          //   e.preventDefault();
-          //   $.ajax(this.href, {
-          //     method: 'POST',
-  				// 		data: source,
-  				//     contentType: 'application/json',
-          //     headers: {
-          //           'Access-Control-Allow-Origin': '*'
-          //       },
-          //     url: run_url,
-          //     success: function(data) {
-          //         console.log('success');
-          //         console.log(JSON.stringify(data));
-          //       }
-          //   });
-          // });
-
-          // myBtn1.addEventListener('click', function(event) {
-          //   var source = codeMirror.getValue();
-          //   var run_url = 'http://api.hackerearth.com/code/run';
-          //   var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
-          //   $.ajax({
-						// method: 'POST',
-						// data: source,
-				    // contentType: 'application/json',
-            // url: run_url,
-            // success: function(data) {
-            //     console.log('success');
-            //     console.log(JSON.stringify(data));
-            //   }
-          //   });
-          // });
-
-          // //add event listener
-          // myBtn1.addEventListener('click', function(event) {
-          //   var source = codeMirror.getValue();
-          //   var run_url = 'http://api.hackerearth.com/code/run/';
-          //   var clientSecretKey = 'eb44c5dfc51c2cfe344014db15b69b2a931393b8';
-          //   // var myText = document.getElementById('output-box1').value = '\u{1F4A9}';
-          //   var data = {
-          //     'client_secret': clientSecretKey,
-          //     'async': 0,
-          //     'source': source,
-          //     'lang': "java",
-          //     'time_limit': 5,
-          //     'memory_limit': 262144,
-          //   }
-          //   var xhr = new XMLHttpRequest();
-          //   xhr.onreadystatechange = function() {
-          //     if (xhr.readyState == XMLHttpRequest.DONE) {
-          //       // alert(xhr.responseText);
-          //       var myText = document.getElementById('output-box1').value = xhr.responseText;
-          //     }
-          //   }
-          //   xhr.open("POST", run_url, true);
-          //   xhr.withCredentials = true;
-          //   xhr.setRequestHeader("Content-Type", "application/json");
-          //   xhr.setRequestHeader("Accept", "application/json");
-          //   xhr.send(data);
-          // });
         }
 
         // Helper to get hash from end of URL or generate a random one.
@@ -240,6 +190,29 @@
           //// Create Firepad.
           var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
             defaultText: 'public class Main{\n  public static void main(String[] args) {\n    System.out.println(\"abc\");\n  }\n}'
+          });
+
+          //get a reference to the element
+          var myBtn2 = document.getElementById('button2');
+
+          myBtn2.addEventListener('click', function(event) {
+            console.log('clicked');
+
+            var e = document.getElementById("select-tutor");
+            console.log(e.options[e.selectedIndex].value);
+
+            var data = {data: codeMirror.getValue(), lang: e.options[e.selectedIndex].value};
+            console.log(JSON.stringify(data));
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("output-box2").value = this.responseText;
+              }
+            };
+            xhttp.open("POST", "/compile", true);
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhttp.send(JSON.stringify(data));
           });
         }
 
