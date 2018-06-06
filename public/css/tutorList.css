@@ -16,3 +16,18 @@ nav {
     color: white;
     font-size: 20pt;
 }
+
+body {
+  background: white; /* fallback for old browsers */
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 50pt;
+}
