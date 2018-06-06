@@ -58,7 +58,7 @@
                 </div>
                 <br>
                 <div class="row">
-                  <% users.forEach(function(user) { %>
+                  <% tutors.forEach(function(tutor) { %>
                     <!-- Product Item -->
                     <div class="product-list col-md-12">
                         <div class="product-item">
@@ -68,31 +68,47 @@
                             </div>
                             <div class="caption">
                               <div class="name">
-                                  <a href="#"><%= user.name %></a>
+                                  <a href="#"><%= tutor.first_name %> <%= tutor.last_name %></a>
                               </div>
                               <div class="description">
-                                  <p>Teaches how to sewar in Cantonese fluently. Also teach how to count very long wordsvery long wordsvery long (the description can be this long including this text)</p>
+                                  <p><%= tutor.shorter_detail %></p>
                                   <span><strong>Skills: </strong></span>
-                                  <span class="label label-warning">Cantonese</span>
-                                  <span class="label label-info">English</span>
-                                  <span class="label label-info">Arrogance</span>
-                                  <span class="label label-success">Kidney Disfunction</span>
-                                  <span class="label label-success">TypeII diabetes</span>
+                                  <% tutor.skills.forEach(function(skill){ %>
+                                    <span class="label label-success"><%= skill %></span>
+                                    <%  });
+                                  %>
                               </div>
                               <div class="rating">
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star-o fa-lg"></i>
+                                <%
+                                  var stars = 0;
+                                  for(var i=0; i < Math.floor(tutor.ratings/1) && i < 5; i++) {
+                                    stars ++;
+                                    %><i class="fa fa-star fa-lg"></i><%
+                                  }
+                                  var last_star_value = tutor.ratings%1;
+                                  if (stars < 5) {
+                                    stars ++;
+                                    if (last_star_value < 0.25) {
+                                      %><i class="fa fa-star-o fa-lg"></i><%
+                                    } else if (last_star_value > 0.25 && last_star_value < 0.75) {
+                                      %><i class="fa fa-star-half fa-lg"></i><%
+                                    } else {
+                                      %><i class="fa fa-star fa-lg"></i><%
+                                    }
+                                  }
+                                  while (stars < 5) {
+                                    stars ++;
+                                    %><i class="fa fa-star-o fa-lg"></i><%
+                                  }
+                                %>
                               </div>
                               <div class="price">
-                                  <span>$4/hour</span>
+                                  <span>£<%= tutor.rate_per_hour %>/hour</span>
                               </div>
                               <div class="contactAndCodeup">
                                 <div class ="col-sm-1 nopadding">
-                                  <div id="<%= user.name %>">
-                                      <span style="display:none"><%= user.name %></span>
+                                  <div id="<%= tutor.first_name %>">
+                                      <span style="display:none"><%= tutor.first_name %> <%= tutor.last_name %></span>
                                       <button type="button" class="btn contact btn-success">Contact</button>
                                   </div>
                                 </div>
@@ -100,8 +116,8 @@
                                   <a href="/code"><button type="button" class="btn btn-success">Code Up!</button></a>
                                 </div>
                                 <div class="socialMediaContacts">
-                                  <i href="#" class="fa fa-facebook"></i>
-                                  <i href="#" class="fa fa-skype"></i>
+                                  <a href="http://m.me/<%= tutor.facebook %>"><i class="fa fa-facebook"></i></a>
+                                  <a href="skype:<%= tutor.skype_id %>?call"><i class="fa fa-skype"></i></a>
                                 </div>
                               </div>
                             </div>
@@ -113,21 +129,6 @@
             </div>
         </div>
       </div>
-
-
-
-
-      <!-- <% users.forEach(function(user) { %>
-          <div id="<%= user.name %>">
-              <span><%= user.name %></span>
-              <a class="btn contact">Contact</a>
-              <a class="btn" href="/code">Code Up!</a>
-          </div>
-      <% }); %>
-    -->
-
-
-
 
       <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>

@@ -104,17 +104,18 @@
     opacity: .75
 }
 
-.fa-star, .fa-star-o {
+.fa-star, .fa-star-o, .fa-star-half {
     color: #ffce54;
     font-size: 500px;
     padding: 0px;
 }
-
+/*
 .product-item a {
     display: block;
     color: #434a54;
     font-weight: 700;
 }
+*/
 
 .product-list .product-item .description p {
     line-height: 21px;
