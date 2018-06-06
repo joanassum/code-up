@@ -10,7 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "compile-run": "^1.2.2",
     "express": "^4.16.3",
-    "pg": "^7.4.3"
+    "http": "^0.0.0",
+    "jquery": "^3.3.1",
+    "node-hackerearth": "^1.2.0",
+    "pg": "^7.4.3",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
   }
 }
