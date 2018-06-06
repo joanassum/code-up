@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io').listen(server);
 const pg = require('pg');
 const request = require('request');
 var bodyParser = require('body-parser')
@@ -17,10 +19,18 @@ const pool = new pg.Pool({
     port: '5432'
 });
 
+
+// A dictionary of online users
+const users = {};
+
 const port = 8000;
+server.listen(port);
 
 // Specify to serve files from the public directory
 app.use(express.static(__dirname + '/public'));
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
 // HTML directory
 const html_dir = __dirname + '/public/html/';
@@ -42,8 +52,12 @@ app.get('/login', function(req, res){
             res.sendFile(html_dir + 'login.html');
         // If username and password is correct ...
         } else if (result.rows[0].password === req.query.password) {
-            // ... Load tutor page
-            res.sendFile(html_dir + 'tutorList.html');
+            //... Load tutor page
+            res.render('pages/tutorList', {
+                username: req.query.username,
+                users: [{name: 'Amelie'}, {name: 'alvis'}]
+            });
+
         // Otherwise, password is incorrect ...
         } else {
             // ... Reload login page
@@ -57,6 +71,8 @@ app.get('/code', function(req, res) {
     res.sendFile(html_dir + 'code.html');
 });
 
+
+//When "Compile" button is clicked ...
 app.post('/compile', function(req,res) {
 
   //var data = "public class Main{ public static void main(String[] args) {System.out.println(\"abc\");}}";
@@ -143,10 +159,23 @@ app.post('/compile', function(req,res) {
 });
 
 
-//When "Compile" button is clicked ...
 
 
 
-app.listen(port, function () {
-  console.log('Example app listening on port ' + port + '!');
+
+// Code for chatbox function
+io.sockets.on('connection', function(socket) {
+    socket.on('login', function(data) {
+        socket.username = data;
+        users[socket.username] = socket;
+    });
+
+    socket.on('to server', function(data) {
+        users[data.to].emit('to client', {from: data.from, msg: data.msg});
+    });
+
+    socket.on('disconnect', function() {
+        // Remove the user from the online list
+        delete users[socket.username];
+    });
 });
