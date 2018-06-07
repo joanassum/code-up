@@ -5,7 +5,7 @@ const io = require('socket.io').listen(server);
 const pg = require('pg');
 const request = require('request');
 var serveStatic = require('serve-static');  // serve static files
-var easyrtc = require("../easyrtc");               // EasyRTC external module
+var easyrtc = require("./easyrtc");               // EasyRTC external module
 var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
