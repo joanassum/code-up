@@ -9,7 +9,7 @@ var sslOptions = {
 };
 const httpsserver = require('https').createServer(sslOptions, app);
 httpsserver.listen(8443);
-const io = require('socket.io').listen(server);
+const io = require('socket.io').listen(httpsserver);
 const pg = require('pg');
 const request = require('request');
 var serveStatic = require('serve-static');  // serve static files
