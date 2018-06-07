@@ -166,6 +166,7 @@ body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
 }
 
 .colors {
+  margin-left: 10px;
   position: fixed;
 }
 
