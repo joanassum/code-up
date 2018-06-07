@@ -21,6 +21,8 @@
     "pg": "^7.4.3",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "fs": "^0.0.1",
+    "https": "^1.0.0"
   }
 }

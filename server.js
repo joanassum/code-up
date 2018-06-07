@@ -1,6 +1,14 @@
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
+// HTTPs server set up
+const fs = require('fs');
+var sslOptions = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
+const httpsserver = require('https').createServer(sslOptions, app);
+httpsserver.listen(8443);
 const io = require('socket.io').listen(server);
 const pg = require('pg');
 const request = require('request');
