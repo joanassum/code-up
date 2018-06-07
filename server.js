@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
 app.get('/login', function(req, res){
 
     // Query database for user and password
-    const query = "SELECT DISTINCT username, password FROM users WHERE username = '" + req.query.username + "'";
+    const query = "SELECT DISTINCT id, password FROM users WHERE id = '" + req.query.username + "'";
 
     pool.query(query, (accessErr, accessResult) => {
         // If username is not in database ...
