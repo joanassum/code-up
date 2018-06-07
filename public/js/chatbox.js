@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.close', function() {
 		var chatbox = $(this).parents().parents().attr("rel") ;
-		$('[rel="'+chatbox+'"]').hide();
+		$('[rel="'+chatbox+'"]').remove();
 		arr.splice($.inArray(chatbox, arr), 1);
 		displayChatBox();
 		return false;

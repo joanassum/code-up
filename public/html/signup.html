@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Code Up</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+  <!-- Select2 CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/signup.css">
+
+</head>
+
+<body>
+    <h1>Code Up</h1>
+
+    <div class="login-page">
+        <div class="form">
+            <form id="signup_form" class="register-form" action="/create_user" method="GET">
+
+                <!-- Personal Details Signup Form -->
+                <h4>Personal Details</h4>
+                <div class="row">
+                    <input type="text" name="firstname" value="" class="form-control input-lg column left" placeholder="First Name"/>
+                    <input type="text" name="lastname" value="" class="form-control input-lg column" placeholder="Last Name"/>
+                    <input type="text" name="email" value="" class="form-control input-lg left" placeholder="Email"/>
+                    <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"  />
+                    <input type="text" name="facebook" value="" class="form-control input-lg" placeholder="Facebook account"  />
+                    <input type="text" name="skype" value="" class="form-control input-lg" placeholder="Skype account"  />
+                </div>
+
+
+                <!-- Personal Details Signup Form -->
+                <div id="tutor_details">
+                    <h4>Tutor Details</h4>
+                    <div class="row">
+                        <select id="skills" name="skills" multiple="multiple">
+                          <option value="Java">Java</option>
+                          <option value="Python">Python</option>
+                        </select>
+                        <textarea name="description" form="signup_form" placeholder="Description" rows="5"></textarea>
+                        <input type="text" id="rate" name="rate_per_hour" value="" class="form-control input-lg" placeholder="Rate Per Hour (In Pounds)" />
+                   </div>
+                </div>
+                <input id="tutor" type="radio" name="tutor" value="true">
+                <input id="notTutor" type="radio" name="tutor" value="false" checked>
+                <button type="button" id="tutor_btn">Become a Tutor</button>
+                <button id="submit_btn" type="submit">Create my account</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <!-- Link to TutorList javascript -->
+    <script src="../js/signup.js"></script>
+
+</body>
+</html>

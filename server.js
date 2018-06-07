@@ -79,6 +79,42 @@ app.get('/login', function(req, res){
     });
 });
 
+// When "Sign Up" button is clicked ...
+app.get('/signup', function(req, res) {
+    res.sendFile(html_dir + 'signup.html');
+});
+
+app.post('/create_user', function(req, res) {
+
+    // Add tutor/student to the users database
+    let query = "INSERT INTO users VALUES (";
+    query += "'" + req.body.email + "', ";
+    query += "'" + req.body.firstname + "', ";
+    query += "'" + req.body.lastname + "', ";
+    query += "'" + req.body.facebook  + "', ";
+    query += "'" + req.body.skype  + "', ";
+    query += "'" + req.body.password  + "')";
+    pool.query(query, (err, result) => {});
+
+    // Add tutor to the tutor database
+    if (req.body.tutor == 'true') {
+        let query = "INSERT INTO tutorlist VALUES (";
+        query += "'" + req.body.email + "', ";
+        query += "'" + req.body.firstname + "', ";
+        query += "'" + req.body.lastname + "', ";
+        query += "'" + req.body.description + "', ";
+        query += "'" + req.body.rph + "', ";
+        query += "'{" + req.body.skills.split(" ") + "}', ";
+        query +=  0 + ", ";
+        query += "'" + req.body.facebook  + "', ";
+        query += "'" + req.body.skype  + "')";
+
+        pool.query(query, (err, result) => {
+            console.log(err);
+        });
+    }
+})
+
 //When "Code Up!" button is clicked ...
 app.get('/code', function(req, res) {
     res.sendFile(html_dir + 'code.html');
@@ -121,11 +157,6 @@ app.post('/compile', function(req,res) {
     });
   }
 });
-
-
-
-
-
 
 // Code for chatbox function
 io.sockets.on('connection', function(socket) {
