@@ -114,6 +114,33 @@ body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
     clear: both;
 } */
 
+.whiteboard-container {
+  padding-top: 10pt;
+  /* height: 50pt; */
+}
+
+.whiteboard {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.colors {
+  position: fixed;
+}
+
+.color {
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
+.color.black { background-color: black; }
+.color.red { background-color: red; }
+.color.green { background-color: green; }
+.color.blue { background-color: blue; }
+.color.yellow { background-color: yellow; }
+
 .navbar {
   margin-bottom: 0px;
 }
