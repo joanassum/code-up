@@ -64,7 +64,7 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                      <li><a href="#">Link</a></li>
+                      <li><a href="#">Home</a></li>
                       <li><a href="#">Link</a></li>
                       <li><a href="#">Link</a></li>
                   </ul>
@@ -163,16 +163,16 @@
         <div class="whiteboard-content">
           <span class="close">&times;</span>
           <canvas class="whiteboard" id="mycanvas" style="border:1px solid #000000;"></canvas>
+          <div class="colors">
+            <div class="color black"></div>
+            <div class="color red"></div>
+            <div class="color green"></div>
+            <div class="color blue"></div>
+            <div class="color yellow"></div>
+          </div>
         </div>
       </div>
 
-        <div class="colors">
-          <div class="color black"></div>
-          <div class="color red"></div>
-          <div class="color green"></div>
-          <div class="color blue"></div>
-          <div class="color yellow"></div>
-        </div>
 
       <script src="/socket.io/socket.io.js"></script>
       <script src="../js/whiteboard.js"></script>
@@ -313,6 +313,7 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
                 document.getElementById("output-box2").value = this.responseText;
               }
             };
