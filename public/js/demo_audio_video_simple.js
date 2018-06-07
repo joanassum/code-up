@@ -28,9 +28,24 @@ function convertListToButtons (roomName, data, isPrimary) {
             };
         }(easyrtcid);
 
-        var label = document.createTextNode(easyrtc.idToName(easyrtcid));
+        var label = document.createTextNode(easyrtc.idToName("Start Call"));
         button.appendChild(label);
         otherClientDiv.appendChild(button);
+
+        console.log("calling..." + easyrtcid);
+        // var video = easyrtc.getIthVideo(0);
+        // var videoID = easyrtc.getCallerOfVideo(video);
+        // console.log("calling..." + videoID);
+
+        var endButton = document.createElement('button');
+        endButton.onclick = function() {
+              easyrtc.hangup(easyrtcid);
+              hideVideo(video);
+              setCallerOfVideo(video, "");
+        }
+        var label2 = document.createTextNode(easyrtc.idToName("End Call"));
+        endButton.appendChild(label2);
+        otherClientDiv.appendChild(endButton);
     }
 }
 
