@@ -66,6 +66,11 @@ app.get('/login', function(req, res){
     });
 });
 
+// When "Sign Up" button is clicked ...
+app.get('/signup', function(req, res) {
+    res.sendFile(html_dir + 'signup.html');
+});
+
 //When "Code Up!" button is clicked ...
 app.get('/code', function(req, res) {
     res.sendFile(html_dir + 'code.html');
@@ -157,11 +162,6 @@ app.post('/compile', function(req,res) {
   //   }
   // });
 });
-
-
-
-
-
 
 // Code for chatbox function
 io.sockets.on('connection', function(socket) {
