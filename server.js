@@ -173,6 +173,7 @@ io.sockets.on('connection', function(socket) {
         // Remove the user from the online list
         delete users[socket.username];
     });
+    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
 });
 
 // Set process name

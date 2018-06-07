@@ -158,6 +158,21 @@
       </div>
       </div>
 
+      <div id="whiteboard-container">
+        <canvas class="whiteboard" id="mycanvas" style="border:1px solid #000000;"></canvas>
+      </div>
+
+        <div class="colors">
+          <div class="color black"></div>
+          <div class="color red"></div>
+          <div class="color green"></div>
+          <div class="color blue"></div>
+          <div class="color yellow"></div>
+        </div>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="../js/whiteboard.js"></script>
+
       <script>
         function init1() {
           //// Initialize Firebase.
@@ -297,7 +312,6 @@
           connect();
         }
       </script>
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
