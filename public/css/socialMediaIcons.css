@@ -1,0 +1,59 @@
+/* social media contact icons */
+
+.fa {
+  padding: 0px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  padding: 10px;
+  background: #3B5998;
+  color: white;
+}
+
+.fa-skype {
+  padding: 10px;
+  background: #00aff0;
+  color: white;
+}
+
+/* font awesome padding remove
+
+span {
+    border: 1px solid #FF0000;
+    display: inline-block;
+    height: 38px;
+    overflow: hidden;
+    position: relative;
+    width: 45px;
+}
+i.icon-check:before {
+    left: 0;
+    position: absolute;
+    top: -4px;
+}
+
+
+
+.icon-check:before { font-size: 2rem; }
+*/
+
+span { line-height: 100%; }
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.col-md-1half {
+    .make-md-column(1.5);
+}
