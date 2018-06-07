@@ -43,7 +43,7 @@ app.get('/', function (req, res) {
 app.get('/login', function(req, res){
 
     // Query database for user and password
-    const query = "SELECT DISTINCT username, password FROM users WHERE username = '" + req.query.username + "'";
+    const query = "SELECT DISTINCT id, password FROM users WHERE id = '" + req.query.username + "'";
 
     pool.query(query, (err, result) => {
         // If username is not in database ...
@@ -65,6 +65,42 @@ app.get('/login', function(req, res){
         }
     });
 });
+
+// When "Sign Up" button is clicked ...
+app.get('/signup', function(req, res) {
+    res.sendFile(html_dir + 'signup.html');
+});
+
+app.post('/create_user', function(req, res) {
+
+    // Add tutor/student to the users database
+    let query = "INSERT INTO users VALUES (";
+    query += "'" + req.body.email + "', ";
+    query += "'" + req.body.firstname + "', ";
+    query += "'" + req.body.lastname + "', ";
+    query += "'" + req.body.facebook  + "', ";
+    query += "'" + req.body.skype  + "', ";
+    query += "'" + req.body.password  + "')";
+    pool.query(query, (err, result) => {});
+
+    // Add tutor to the tutor database
+    if (req.body.tutor == 'true') {
+        let query = "INSERT INTO tutorlist VALUES (";
+        query += "'" + req.body.email + "', ";
+        query += "'" + req.body.firstname + "', ";
+        query += "'" + req.body.lastname + "', ";
+        query += "'" + req.body.description + "', ";
+        query += "'" + req.body.rph + "', ";
+        query += "'{" + req.body.skills.split(" ") + "}', ";
+        query +=  0 + ", ";
+        query += "'" + req.body.facebook  + "', ";
+        query += "'" + req.body.skype  + "')";
+
+        pool.query(query, (err, result) => {
+            console.log(err);
+        });
+    }
+})
 
 //When "Code Up!" button is clicked ...
 app.get('/code', function(req, res) {
@@ -157,11 +193,6 @@ app.post('/compile', function(req,res) {
   //   }
   // });
 });
-
-
-
-
-
 
 // Code for chatbox function
 io.sockets.on('connection', function(socket) {

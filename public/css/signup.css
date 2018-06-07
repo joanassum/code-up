@@ -1,0 +1,135 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 720px;
+  padding: 2% 0 0;
+  margin: auto;
+}
+
+body {
+  background: #76b852; /* #76b852 fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 70pt;
+}
+
+/*****************************************************************************
+* General Form Layout
+*****************************************************************************/
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 720px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.form h4 {
+    margin-bottom: 15px;
+}
+
+/*****************************************************************************
+* Form Input Layout
+*****************************************************************************/
+
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #fff;
+  width: 48%;
+  border: 1px solid #a9a9a9;
+  margin: 0 1% 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form textarea {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #fff;
+    width: 100%;
+    border: 1px solid #a9a9a9;
+    margin: 0 0 15px;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+}
+
+#rate {
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px;
+}
+
+#tutor, #notTutor {
+    display: none;
+}
+
+/*****************************************************************************
+* Form button Layout
+*****************************************************************************/
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 1;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+
+/*****************************************************************************
+* Select2 Layout
+*****************************************************************************/
+#tutor_details {
+    display: none;
+}
+
+/*****************************************************************************
+* Select2 Layout
+*****************************************************************************/
+.select2-container {
+    width: 100% !important;
+    font-family: "Roboto", sans-serif !important;
+    font-size: 14px !important;
+    margin-bottom: 15px !important;
+}
