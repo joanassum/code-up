@@ -50,6 +50,14 @@ $(document).ready(function(){
         }
     });
 
+
+	socket.on('user_connected', function(data) {
+		for (var i=0; i < data.length; i++) {
+			let user = data[i].replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&");
+			$("#"+user).find('button').removeClass('disabled');
+		}
+	});
+
 	// Recieving messages from server
 	socket.on('to client', function(data) {
 		let userID = data.from
@@ -60,6 +68,16 @@ $(document).ready(function(){
 		// Autoscroll to bottom of chat
 		$(".msg_body").animate({ scrollTop: $(".msg_body")[0].scrollHeight}, 100);
 	});
+
+	socket.on('user_disconnected', function(data) {
+		$('.contact').each(function () {
+			$(this).addClass('disabled');
+		});
+		for (var i=0; i < data.length; i++) {
+			let user = data[i].replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&");
+			$("#"+user).find('button').removeClass('disabled');
+		}
+	})
 
 	function displayChatBox(){
 	    i = 20 ; // start position //270
