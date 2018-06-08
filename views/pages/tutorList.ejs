@@ -121,7 +121,10 @@
                                     </div>
                                   </div>
                                   <div class ="col-sm-2">
-                                    <a href="/code"><button type="button" class="btn btn-success">Code Up!</button></a>
+                                    <form id="code_form" class="code-form" action="/code" method="GET">
+                                        <input type="hidden" name="username" value=<%= username %> />
+                                        <button type="submit" form="code_form" value="Code Up"  class="btn btn-success">Code Up</button>
+                                    </form>
                                   </div>
                                   <div class="socialMediaContacts">
                                     <a href="http://m.me/<%= tutor.facebook %>"><i class="fa fa-facebook"></i></a>
