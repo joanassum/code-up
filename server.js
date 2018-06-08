@@ -182,7 +182,11 @@ io.sockets.on('connection', function(socket) {
     });
 
     socket.on('to server', function(data) {
+      try {
         users[data.to].emit('to client', {from: data.from, msg: data.msg});
+      } catch (error) {
+        console.log(error);
+      }
     });
 
     socket.on('disconnect', function() {
