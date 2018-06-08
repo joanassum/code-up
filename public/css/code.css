@@ -191,6 +191,10 @@ body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
   margin-bottom: 5px;
 }
 
+#tutorID {
+    display: inline;
+}
+
 @media screen and (max-width: 600px) {
 .column {
     width: 100%;
