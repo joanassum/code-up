@@ -127,6 +127,8 @@ app.post('/create_user', function(req, res) {
 
 //When "Code Up!" button is clicked ...
 app.get('/code', function(req, res) {
+    console.log("username: "+req.query.username);
+    console.log("tutorID: " +req.query.tutorID);
     res.render('pages/code', {
         username: req.query.username,
         tutorID: req.query.tutorID
