@@ -128,8 +128,9 @@ app.post('/create_user', function(req, res) {
 //When "Code Up!" button is clicked ...
 app.get('/code', function(req, res) {
     res.render('pages/code', {
-        username: req.query.username,
-        tutorID: req.query.tutorID
+        tutorID: req.query.tutorID,
+        username: req.query.username
+
     });
     //res.sendFile(html_dir + 'code.html');
 });
