@@ -79,6 +79,16 @@ app.get('/login', function(req, res){
     });
 });
 
+app.get('/tutorList', function(req, res) {
+  const listQuery = "SELECT * FROM tutorlist";
+  pool.query(listQuery, (listErr, listResult) => {
+    res.render('pages/tutorList', {
+        username: req.query.username,
+        tutors: listResult.rows
+    });
+  });
+});
+
 // When "Sign Up" button is clicked ...
 app.get('/signup', function(req, res) {
     res.sendFile(html_dir + 'signup.html');
@@ -117,7 +127,12 @@ app.post('/create_user', function(req, res) {
 
 //When "Code Up!" button is clicked ...
 app.get('/code', function(req, res) {
-    res.sendFile(html_dir + 'code.html');
+  console.log(req.body.username);
+  res.render('pages/code', {
+      username: req.body.username,
+      // tutors: listResult.rows
+  });
+    //res.sendFile(html_dir + 'code.html');
 });
 
 
@@ -173,6 +188,7 @@ io.sockets.on('connection', function(socket) {
         // Remove the user from the online list
         delete users[socket.username];
     });
+    // Code for whiteboard
     socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
 });
 
