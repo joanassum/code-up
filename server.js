@@ -178,6 +178,7 @@ io.sockets.on('connection', function(socket) {
     socket.on('login', function(data) {
         socket.username = data;
         users[socket.username] = socket;
+        io.sockets.emit('user_connected', Object.keys(users));
     });
 
     socket.on('to server', function(data) {
@@ -187,8 +188,9 @@ io.sockets.on('connection', function(socket) {
     socket.on('disconnect', function() {
         // Remove the user from the online list
         delete users[socket.username];
+        io.sockets.emit('user_disconnected', Object.keys(users));
     });
-    // Code for whiteboard
+
     socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
 });
 
