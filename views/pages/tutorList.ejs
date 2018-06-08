@@ -123,7 +123,8 @@
                                   <div class ="col-sm-2">
                                     <form id="code_form" class="code-form" action="/code" method="GET">
                                         <input type="hidden" name="username" value=<%= username %> />
-                                        <button type="submit" form="code_form" value="Code Up"  class="btn btn-success">Code Up</button>
+                                        <input type="hidden" name="tutorID" value="<%= tutor.id %>"/>
+                                        <button type="submit" form="code_form" class="btn btn-success">Code Up</button>
                                     </form>
                                   </div>
                                   <div class="socialMediaContacts">

@@ -21,16 +21,16 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '.contact', function() {
+		if (!$(this).hasClass("disabled")){
+			var userID = $(this).parent().attr("id");
+			//var username = $(this).prev().text() ;
 
-		var userID = $(this).parent().attr("id");
-		//var username = $(this).prev().text() ;
+			if ($.inArray(userID, arr) != -1) {
+				arr.splice($.inArray(userID, arr), 1);
+			}
 
-		if ($.inArray(userID, arr) != -1) {
-			arr.splice($.inArray(userID, arr), 1);
+			addChatBox(userID);
 		}
-
-		addChatBox(userID);
-
 	});
 
 
