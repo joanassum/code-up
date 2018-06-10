@@ -9,7 +9,8 @@
 }
 
 .product-list .product-item .image img {
-    max-width: 263px
+    max-width: 263px;
+    object-fit: cover;
 }
 
 .product-list .product-item .name a {
