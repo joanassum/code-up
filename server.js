@@ -190,6 +190,15 @@ io.sockets.on('connection', function(socket) {
       } catch (error) {
         console.log(error);
       }
+      var date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      let query = "INSERT INTO chattest VALUES (";
+        query += "'" + data.to + "', ";
+        query += "'" + data.from + "', ";
+        query += "'" + data.msg + "', ";
+        query += "'" + date  + "')";
+        pool.query(query, (err, result) => {
+            console.log(err);
+        });
     });
 
     socket.on('disconnect', function() {
