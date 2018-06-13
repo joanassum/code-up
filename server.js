@@ -176,9 +176,33 @@ app.post('/compile', function(req,res) {
 // Code for chatbox function
 io.sockets.on('connection', function(socket) {
     socket.on('login', function(data) {
+        console.log("log in");
         socket.username = data;
         users[socket.username] = socket;
         io.sockets.emit('user_connected', Object.keys(users));
+    });
+
+    socket.on('chatbox clicked', function(data) {
+      //username = data.user
+      //clicked user's username = data.to
+      // Query database for user and password
+      const query = "SELECT * FROM chattest ORDER BY sendtime ASC";
+      pool.query(query, (accessErr, accessResult) => {
+        //console.log("Err: " + accessErr);
+        var count = accessResult.rowCount;
+        for (var i = 0; i < count; i++) {
+          //msg from logged in user
+          if (accessResult.rows[i].fromuser === data.user &&
+            accessResult.rows[i].touser === data.to) {
+              users[data.user].emit('display history', {user: data.to, pos: 'right', msg: accessResult.rows[i].msg});
+            }
+            //msg from clicked user
+          else if (accessResult.rows[i].fromuser === data.to &&
+            accessResult.rows[i].touser === data.user) {
+              users[data.user].emit('display history', {user: data.to, pos: 'left', msg: accessResult.rows[i].msg});
+            }
+        }
+      });
     });
 
     socket.on('to server', function(data) {

@@ -30,6 +30,7 @@ $(document).ready(function(){
 			}
 
 			addChatBox(userID);
+			socket.emit('chatbox clicked', {user: $('#username').text(), to: userID});
 		}
 	});
 
@@ -67,6 +68,21 @@ $(document).ready(function(){
 		$('<div class="msg-left">'+data.msg+'</div>').insertBefore('[rel="'+userID+'"] .msg_push');
 		// Autoscroll to bottom of chat
 		$(".msg_body").animate({ scrollTop: $(".msg_body")[0].scrollHeight}, 100);
+	});
+
+	socket.on('display history', function(data) {
+		let userID = data.user;
+		if (data.pos == 'left') {
+			console.log(data.msg);
+			$('<div class="msg-left">'+data.msg+'</div>').insertBefore('[rel="'+userID+'"] .msg_push');
+			// Autoscroll to bottom of chat
+			$(".msg_body").animate({ scrollTop: $(".msg_body")[0].scrollHeight}, 100);
+		} else if (data.pos == 'right') {
+			console.log(data.msg);
+			$('<div class="msg-right">'+data.msg+'</div>').insertBefore('[rel="'+userID+'"] .msg_push');
+			// Autoscroll to bottom of chat
+			$(".msg_body").animate({ scrollTop: $(".msg_body")[0].scrollHeight}, 100);
+		}
 	});
 
 	socket.on('user_disconnected', function(data) {
