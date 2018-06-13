@@ -46,7 +46,11 @@ app.set('view engine', 'ejs');
 const html_dir = __dirname + '/public/html/';
 
 app.get('/', function (req, res) {
-  res.sendFile(html_dir + 'login.html')
+  res.sendFile(__dirname + '/public/homepage/index.html')
+});
+
+app.get('/loginpage', function (req, res) {
+  res.sendFile(html_dir + 'login.html');
 });
 
 // When "Login" button is clicked ...
