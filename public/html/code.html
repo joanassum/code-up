@@ -149,11 +149,13 @@
       <div class="row2" id="buttons">
       <div class="column2" id="button-container1">
         <button type="submit" value="Compile 1" id='button1'>Compile</button>
+        <button type="submit" value="Save 1" id='savebutton1'>Save</button>
         <h4>Output: </h4>
         <textarea autofocus readonly id="output-box1">Compile result here&#13;&#10;Press button to try</textarea>
       </div>
       <div class="column2" id="button-container2">
         <button type="submit" value="Compile 2" id='button2'>Compile</button>
+        <button type="submit" value="Save 2" id='savebutton2'>Save</button>
         <h4>Output: </h4>
         <textarea autofocus readonly id="output-box2">Compile result here&#13;&#10;Press button to try</textarea>
       </div>
@@ -251,6 +253,7 @@
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xhttp.send(JSON.stringify(data));
           });
+
         }
 
         // Helper to get hash from end of URL or generate a random one.

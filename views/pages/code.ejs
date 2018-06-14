@@ -87,6 +87,7 @@
           <!-- <option value="C++">C++</option> -->
           <option value="Java">Java</option>
           <option value="Python">Python</option>
+          <option value="Other">Other</option>
         </select>
       </div>
       <div class="column" id="firepad-container2">
@@ -96,6 +97,7 @@
           <!-- <option value="C++">C++</option> -->
           <option value="Java">Java</option>
           <option value="Python">Python</option>
+          <option value="Other">Other</option>
         </select>
       </div>
       <div class="columnx" id="container">
@@ -130,11 +132,13 @@
       <div class="row2" id="buttons">
       <div class="column2" id="button-container1">
         <button type="submit" value="Compile 1" id='button1'>Compile</button>
+        <button type="submit" value="Save 1" id='savebutton1'>Save</button>
         <h4>Output: </h4>
         <textarea autofocus readonly id="output-box1">Compile result here&#13;&#10;Press button to try</textarea>
       </div>
       <div class="column2" id="button-container2">
         <button type="submit" value="Compile 2" id='button2'>Compile</button>
+        <button type="submit" value="Save 2" id='savebutton2'>Save</button>
         <h4>Output: </h4>
         <textarea autofocus readonly id="output-box2">Compile result here&#13;&#10;Press button to try</textarea>
       </div>
@@ -232,6 +236,54 @@
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xhttp.send(JSON.stringify(data));
           });
+
+          var mySaveBtn1 = document.getElementById('savebutton1');
+
+          mySaveBtn1.addEventListener('click', function(event) {
+            console.log("save clicked");
+            saveTextAsFile();
+          });
+
+          // Reference : https://stackoverflow.com/questions/39075483/downloading-and-uploading-in-codemirror-textarea-and-skulpt-execution-issues
+
+          function saveTextAsFile() {
+            var textToWrite = codeMirror.getValue();
+            var textFileAsBlob = new Blob([textToWrite], {type:"text/plain;charset=utf-8"});
+            var e = document.getElementById("select-tutee");
+            var lang = e.options[e.selectedIndex].value;
+            var fileNameToSaveAs = "code.txt";
+            if (lang === "Java") {
+              fileNameToSaveAs = "code.java";
+            } else if (lang === "Python") {
+              fileNameToSaveAs = "code.py";
+            }
+
+            var downloadLink = document.createElement("a");
+            downloadLink.download = fileNameToSaveAs;
+            downloadLink.innerHTML = "Download File";
+            if (window.webkitURL != null)
+            {
+              // Chrome allows the link to be clicked
+              // without actually adding it to the DOM.
+              downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+            }
+            else
+            {
+              // Firefox requires the link to be added to the DOM
+              // before it can be clicked.
+              downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+              downloadLink.onclick = destroyClickedElement;
+              downloadLink.style.display = "none";
+              document.body.appendChild(downloadLink);
+            }
+
+            downloadLink.click();
+          }
+
+          function destroyClickedElement(event) {
+            document.body.removeChild(event.target);
+          }
+
         }
 
         // Helper to get hash from end of URL or generate a random one.
@@ -302,6 +354,56 @@
             xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             xhttp.send(JSON.stringify(data));
           });
+
+
+          var mySaveBtn1 = document.getElementById('savebutton2');
+
+          mySaveBtn1.addEventListener('click', function(event) {
+              console.log("save clicked");
+              saveTextAsFile();
+          });
+
+          // Reference : https://stackoverflow.com/questions/39075483/downloading-and-uploading-in-codemirror-textarea-and-skulpt-execution-issues
+
+          function saveTextAsFile() {
+          var textToWrite = codeMirror.getValue();
+          var textFileAsBlob = new Blob([textToWrite], {type:"text/plain;charset=utf-8"});
+          var e = document.getElementById("select-tutor");
+          var lang = e.options[e.selectedIndex].value;
+          var fileNameToSaveAs = "code.txt";
+          if (lang === "Java") {
+              fileNameToSaveAs = "code.java";
+          } else if (lang === "Python") {
+              fileNameToSaveAs = "code.py";
+          }
+
+          var downloadLink = document.createElement("a");
+          downloadLink.download = fileNameToSaveAs;
+          downloadLink.innerHTML = "Download File";
+          if (window.webkitURL != null)
+          {
+              // Chrome allows the link to be clicked
+              // without actually adding it to the DOM.
+              downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+          }
+          else
+          {
+              // Firefox requires the link to be added to the DOM
+              // before it can be clicked.
+              downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+              downloadLink.onclick = destroyClickedElement;
+              downloadLink.style.display = "none";
+              document.body.appendChild(downloadLink);
+          }
+
+          downloadLink.click();
+        }
+
+        function destroyClickedElement(event) {
+            document.body.removeChild(event.target);
+        }
+
+
         }
 
         // Helper to get hash from end of URL or generate a random one.
