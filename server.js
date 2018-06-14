@@ -46,14 +46,18 @@ app.set('view engine', 'ejs');
 const html_dir = __dirname + '/public/html/';
 
 app.get('/', function (req, res) {
-  res.sendFile(html_dir + 'login.html')
+  res.sendFile(__dirname + '/public/homepage/index.html')
+});
+
+app.get('/loginpage', function (req, res) {
+  res.sendFile(html_dir + 'login.html');
 });
 
 // When "Login" button is clicked ...
-app.get('/login', function(req, res){
+app.post('/login', function(req, res){
 
     // Query database for user and password
-    const query = "SELECT DISTINCT id, password FROM users WHERE id = '" + req.query.username + "'";
+    const query = "SELECT DISTINCT id, password FROM users WHERE id = '" + req.body.username + "'";
 
     pool.query(query, (accessErr, accessResult) => {
         // If username is not in database ...
@@ -61,12 +65,12 @@ app.get('/login', function(req, res){
             // ... Reload login page
             res.sendFile(html_dir + 'login.html');
         // If username and password is correct ...
-      } else if (accessResult.rows[0].password === req.query.password) {
+      } else if (accessResult.rows[0].password === req.body.password) {
             //... Load tutor page
             const listQuery = "SELECT * FROM tutorlist";
             pool.query(listQuery, (listErr, listResult) => {
               res.render('pages/tutorList', {
-                  username: req.query.username,
+                  username: req.body.username,
                   tutors: listResult.rows
               });
             });
