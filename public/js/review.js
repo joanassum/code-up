@@ -38,4 +38,25 @@ $(function(){
   $('.starrr').on('starrr:change', function(e, value){
     ratingsField.val(value);
   });
+
+  $('#save_btn').on('click', function(e) {
+      e.preventDefault();
+      var data = {
+          username: $('#username').text(),
+          ratings: ratingsField.val(),
+          comment: $('textarea[name=comment]').val(),
+          tutor_id: $('#tutor_id').text(),
+          review_title: $('textarea[name=review_title]').val()
+      };
+
+      $.ajax({
+         url: "/submit_review",
+         type: "post",
+         data: data,
+         dataType: "json",
+         async: true,
+      });
+      location.reload();
+  });
+
 });

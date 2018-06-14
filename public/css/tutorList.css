@@ -31,3 +31,10 @@ h1 {
     font-weight: bold;
     font-size: 50pt;
 }
+
+.name form button {
+    -webkit-appearance: none;
+    border: none;
+    box-shadow: none !important;
+    padding: 0;
+}:-webkit-autofill { color: #fff !important; }

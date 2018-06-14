@@ -3,13 +3,18 @@
 body
 {
     font-family: 'Lato', 'sans-serif';
-    }
+}
 .profile
 {
     min-height: 255px;
     display: block;
     margin: 50px;
-    }
+}
+
+img
+{
+    min-height: 200px;
+}
 .profile-container
 {
   padding-left: 10px;
@@ -21,4 +26,9 @@ span.tags
     color: #f5f5f5;
     font-weight: bold;
     padding: 2px 4px;
-    }
+}
+
+#tutor_id
+{
+    display: inline-block;
+}

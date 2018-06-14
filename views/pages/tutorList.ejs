@@ -76,7 +76,11 @@
                               </div>
                               <div class="caption">
                                 <div class="name">
-                                    <a href="#" class="tutorName"><%= tutor.first_name %> <%= tutor.last_name %></a>
+                                    <form id="tutor_details_form<%= tutor.id %>" action="/tutor_detail" method="GET">
+                                        <input type="hidden" name="username" value=<%= username %> />
+                                        <input type="hidden" name="tutor_id" value="<%= tutor.id %>"/>
+                                        <button type="submit" form="tutor_details_form<%= tutor.id %>"><%= tutor.first_name %> <%= tutor.last_name %></button>
+                                    </form>
                                 </div>
                                 <div class="description">
                                     <p><%= tutor.shorter_detail %></p>

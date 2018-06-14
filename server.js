@@ -123,7 +123,47 @@ app.post('/create_user', function(req, res) {
             console.log(err);
         });
     }
-})
+});
+
+// When the name of the tutor is clicked ...
+app.get('/tutor_detail', function (req, res) {
+    const query = "SELECT * FROM tutorlist WHERE id='" + req.query.tutor_id + "'";
+    const review_query = "SELECT * FROM tutorreviews WHERE tutorid='" + req.query.tutor_id + "'";
+    pool.query(query, (err, result) => {
+        pool.query(review_query, (error, review_result) => {
+            res.render('pages/tutorDetails', {
+                username: req.query.username,
+                id: req.query.tutor_id,
+                firstname: result.rows[0].first_name,
+                lastname: result.rows[0].last_name,
+                details: result.rows[0].details,
+                skills: result.rows[0].skills,
+                ratings: result.rows[0].ratings,
+                reviews: review_result.rows
+            });
+        })
+    });
+});
+
+app.post('/submit_review', function(req, res) {
+
+    // Add review to database
+    let query = "INSERT INTO tutorreviews VALUES (";
+    query += "'" + req.body.tutor_id + "', ";
+    query += "'" + req.body.username + "', ";
+    query += "'" + req.body.ratings + "', ";
+    query += "'" + req.body.review_title  + "', ";
+    query += "'" + req.body.comment  + "')";
+    pool.query(query, (err, result) => {});
+
+    let rating_query = "SELECT AVG(rating) FROM tutorreviews WHERE tutorid='" + req.body.tutor_id + "'";
+    pool.query(rating_query, (err, result) => {
+        let update_rating_query = "UPDATE tutorlist SET ratings=" + Math.round(result.rows[0].avg * 100) / 100 + " WHERE id='" + req.body.tutor_id + "'";
+        pool.query(update_rating_query, (error, res) => {});
+    });
+
+
+});
 
 //When "Code Up!" button is clicked ...
 app.get('/code', function(req, res) {
