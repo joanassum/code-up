@@ -168,11 +168,10 @@ app.post('/submit_review', function(req, res) {
         var average = result.rows[0].avg;
         if (average === null) {
           average = req.body.ratings;
-        } else {
-          console.log("Calculating average rating...");
-          let update_rating_query = "UPDATE tutorlist SET ratings=" + Math.round(average * 100) / 100 + " WHERE id='" + req.body.tutor_id + "'";
-          pool.query(update_rating_query, (error, res) => {});
         }
+        console.log("Calculating average rating...");
+        let update_rating_query = "UPDATE tutorlist SET ratings=" + Math.round(average * 100) / 100 + " WHERE id='" + req.body.tutor_id + "'";
+        pool.query(update_rating_query, (error, res) => {});
     });
 
 
