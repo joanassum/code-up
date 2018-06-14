@@ -83,11 +83,11 @@ app.post('/login', function(req, res){
     });
 });
 
-app.get('/tutorList', function(req, res) {
+app.post('/tutorList', function(req, res) {
   const listQuery = "SELECT * FROM tutorlist";
   pool.query(listQuery, (listErr, listResult) => {
     res.render('pages/tutorList', {
-        username: req.query.username,
+        username: req.body.username,
         tutors: listResult.rows
     });
   });

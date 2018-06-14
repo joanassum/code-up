@@ -1,4 +1,31 @@
 <!-- Navigation bar -->
+<style>
+  .no-bullet{
+    list-style-type: none
+  }
+
+  #home-button {
+    /* background-color: Transparent;
+    background-repeat:no-repeat; */
+    border: none;
+    /* cursor:pointer;
+    overflow: hidden;
+    outline:none; */
+    padding-top: 15px;
+    background: #76b852; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+    background: -moz-linear-gradient(right, #76b852, #8DC26F);
+    background: -o-linear-gradient(right, #76b852, #8DC26F);
+    background: linear-gradient(to left, #76b852, #8DC26F);
+    font-family: "Roboto", sans-serif;
+    color: #505050;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  #home-button:hover {
+    color: #000000;
+  }
+</style>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,9 +42,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/tutorList?" + <%= username %> >Home</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+                <li class="no-bullet">
+                  <form action="/tutorList" method="POST" >
+                    <input  type="hidden" name="username" value=<%= username %> />
+                    <button id="home-button" type="submit">Home</button>
+                  </form>
+                </li>
+                <!-- <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" id="username"><%= username %></a></li>
