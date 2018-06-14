@@ -170,7 +170,7 @@ app.post('/submit_review', function(req, res) {
           pool.query(rating_query, (error, res) => {
             let update_rating_query = "UPDATE tutorlist SET ratings=" + Math.round(res.rows[0].avg * 100) / 100 + " WHERE id='" + req.body.tutor_id + "'";
             pool.query(update_rating_query, (error1, res1) => {});
-          }
+          });
         } else {
           let update_rating_query = "UPDATE tutorlist SET ratings=" + Math.round(result.rows[0].avg * 100) / 100 + " WHERE id='" + req.body.tutor_id + "'";
           pool.query(update_rating_query, (error, res) => {});
