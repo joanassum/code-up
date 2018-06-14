@@ -4,7 +4,7 @@ body {
   /* padding-top: 70px; */
 }
 .container {
-  
+
 }
 .review-container {
   padding-left: 10px;
@@ -66,4 +66,8 @@ body {
     margin: 20px 0;
     font-size: 24px;
     color: #d17581;
+}
+
+.form-control {
+    margin: 10px 0;
 }
