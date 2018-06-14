@@ -52,6 +52,9 @@ app.get('/', function (req, res) {
 app.get('/loginpage', function (req, res) {
   res.sendFile(html_dir + 'login.html');
 });
+app.get('/login', function (req, res) {
+  res.sendFile(html_dir + 'login.html');
+});
 
 // When "Login" button is clicked ...
 app.post('/login', function(req, res){
