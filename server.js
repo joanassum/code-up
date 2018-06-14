@@ -141,6 +141,7 @@ app.get('/tutor_detail', function (req, res) {
             res.render('pages/tutorDetails', {
                 username: req.query.username,
                 id: req.query.tutor_id,
+                image: result.rows[0].image,
                 firstname: result.rows[0].first_name,
                 lastname: result.rows[0].last_name,
                 details: result.rows[0].details,
@@ -161,10 +162,9 @@ app.post('/submit_review', function(req, res) {
     query += "'" + req.body.ratings + "', ";
     query += "'" + req.body.review_title  + "', ";
     query += "'" + req.body.comment  + "')";
-    pool.query(query, (err, result) => {});
-
-    let rating_query = "SELECT AVG(rating) FROM tutorreviews WHERE tutorid='" + req.body.tutor_id + "'";
-    pool.query(rating_query, (err, result) => {
+    pool.query(query, (err1, result1) => {
+      let rating_query = "SELECT AVG(rating) FROM tutorreviews WHERE tutorid='" + req.body.tutor_id + "'";
+      pool.query(rating_query, (err, result) => {
         var average = result.rows[0].avg;
         if (average === null) {
           average = req.body.ratings;
@@ -172,7 +172,9 @@ app.post('/submit_review', function(req, res) {
         console.log("Calculating average rating...");
         let update_rating_query = "UPDATE tutorlist SET ratings=" + Math.round(average * 100) / 100 + " WHERE id='" + req.body.tutor_id + "'";
         pool.query(update_rating_query, (error, res) => {});
+      });
     });
+
 
 
 });
