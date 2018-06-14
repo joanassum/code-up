@@ -3,6 +3,9 @@
 body {
   /* padding-top: 70px; */
 }
+.container {
+  
+}
 .review-container {
   padding-left: 10px;
 }
@@ -15,6 +18,8 @@ body {
 	border:1px solid #EFEFEF;
 	padding:15px 15px 20px 15px;
 	border-radius:3px;
+  margin: 40px;
+  height: 150px;
 }
 .bold{
 	font-weight:700;
@@ -28,7 +33,7 @@ body {
 	border:1px solid #EFEFEF;
 	padding:15px;
 	border-radius:3px;
-	margin-bottom:15px;
+	margin:40px;
 }
 .review-block-name{
 	font-size:12px;
