@@ -1,248 +1,254 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-    <title>CodeUp Tutors</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/tutorList.css" />
-    <link rel="stylesheet" href="../css/tutorListingElem.css" />
-    <link rel="stylesheet" href="../css/chatbox.css" />
-    <link rel="stylesheet" href="../css/socialMediaIcons.css" />
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+  <title>CodeUp Tutors</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/tutorList.css" />
+  <link rel="stylesheet" href="../css/tutorListingElem.css" />
+  <link rel="stylesheet" href="../css/chatbox.css" />
+  <link rel="stylesheet" href="../css/socialMediaIcons.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
 
 
 
-    <!-- font-awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
+  <!-- font-awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-      <!-- Navigation bar -->
-      <nav class="navbar navbar-default">
-          <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+<body>
+
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                       <span class="sr-only">Toggle navigation</span>
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" id="title" href="#">Code Up</a>
-              </div>
+        <a class="navbar-brand" id="title" href="#">Code Up</a>
+      </div>
 
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" id="username"></a></li>
-                  </ul>
-              </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-      </nav>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" id="username"></a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
 
-      <!-- Tutor List -->
-      <div class="container">
+  <!-- Tutor List -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 hidden-xs">
+        <div class="list-group">
+          <a href="#" class="list-group-item">JAVA</a>
+          <a href="#" class="list-group-item">- Python</a>
+        </div>
+      </div>
+      <div class="col-md-9">
         <div class="row">
-            <div class="col-sm-3 hidden-xs">
-                <div class="list-group">
-                    <a href="#" class="list-group-item">JAVA</a>
-                    <a href="#" class="list-group-item">- Python</a>
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-sm-2 text-right">
-                        <label class="control-label" for="input-sort">Sort By:</label>
-                    </div>
-                    <div class="col-sm-3 text-right">
-                        <select id="input-sort" class="form-control">
+          <div class="col-sm-2 text-right">
+            <label class="control-label" for="input-sort">Sort By:</label>
+          </div>
+          <div class="col-sm-3 text-right">
+            <select id="input-sort" class="form-control">
                         <option value="" selected="selected">Default</option>
                         <option value="">Name</option>
                         <option value="">Date</option>
                       </select>
-                    </div>
-                    <div class="col-sm-1 text-right">
-                        <label class="control-label" for="input-limit">Show:</label>
-                    </div>
-                    <div class="col-sm-2 text-right">
-                        <select id="input-limit" class="form-control">
+          </div>
+          <div class="col-sm-1 text-right">
+            <label class="control-label" for="input-limit">Show:</label>
+          </div>
+          <div class="col-sm-2 text-right">
+            <select id="input-limit" class="form-control">
                         <option value="" selected="selected">9</option>
                         <option value="">15</option>
                         <option value="">25</option>
                         <option value="">50</option>
                         <option value="">100</option>
                       </select>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <!-- Product Item -->
-                    <div class="product-list col-md-12">
-                        <div class="product-item">
-                            <div class="item-overlay">
-                                <div class="clickable">
-                                    <a href="#">Alvis Lee</a>
-                                </div>
-                            </div>
-                            <div class="image">
-                                <a href="#"><img src="../images/WaiChun.jpg" alt="Wai Chun" style="object-position: 30% 70%"></a>
-                            </div>
-                            <div class="caption">
-                              <div class="name">
-                                  <a href="#">Alvis Lee</a>
-                              </div>
-                              <div class="description">
-                                  <p>Hello! I am a second year student in undergraduate computing course at Imperial College London. I can teach you how to code in Java! I have 3 years experience in coding. Hope I can help you.</p>
-                                  <span><strong>Skills: </strong></span>
-                                  <span class="label label-warning">JAVA</span>
-                              </div>
-                              <div class="rating">
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star-o fa-lg"></i>
-                              </div>
-                              <div class="price">
-                                  <span>$40/hour</span>
-                              </div>
-                              <div class="contactAndCodeup">
-                                <div class ="col-sm-1 nopadding">
-                                  <div id="100">
-                                      <span style="display:none">Alvis Lee</span>
-                                      <button type="button" class="btn contact btn-success">Contact</button>
-                                  </div>
-                                </div>
-                                <div class ="col-sm-2">
-                                  <a href="code.html"><button type="button" class="btn btn-success">Code Up!</button></a>
-                                </div>
-                                <div class="socialMediaContacts">
-                                  <i href="#" class="fa fa-facebook"></i>
-                                  <i href="#" class="fa fa-skype"></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                    <!--/ Product Item -->
-
-                    <!-- Product Item -->
-                    <div class="product-list col-md-12">
-                        <div class="product-item">
-                            <div class="item-overlay">
-                                <div class="clickable">
-                                    <a href="#">Alvis Lee</a>
-                                </div>
-                            </div>
-                            <div class="image">
-                                <a href="#"><img src="../images/Joan.jpg" alt="Wai Chun" style="object-position: 80% 20%"></a>
-                            </div>
-                            <div class="caption">
-                              <div class="name">
-                                  <a href="#">Joan Tso</a>
-                              </div>
-                              <div class="description">
-                                  <p>Hello! I have 5 years of coding experience and I am know for my debuging skills. I can teach you about basic coding and also how to develop better debuging skills. I can teach both in JAVA and Python</p>
-                                  <span><strong>Skills: </strong></span>
-                                  <span class="label label-warning">JAVA</span>
-                                  <span class="label label-warning">Python</span>
-                              </div>
-                              <div class="rating">
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star-o fa-lg"></i>
-                              </div>
-                              <div class="price">
-                                  <span>$45/hour</span>
-                              </div>
-                              <div class="contactAndCodeup">
-                                <div class ="col-sm-1 nopadding">
-                                  <div id="100">
-                                      <span style="display:none">Joan Tso</span>
-                                      <button type="button" class="btn contact btn-success">Contact</button>
-                                  </div>
-                                </div>
-                                <div class ="col-sm-2">
-                                  <a href="code.html"><button type="button" class="btn btn-success">Code Up!</button></a>
-                                </div>
-                                <div class="socialMediaContacts">
-                                  <i href="#" class="fa fa-facebook"></i>
-                                  <i href="#" class="fa fa-skype"></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                    <!--/ Product Item -->
-
-                    <!-- Product Item -->
-                    <div class="product-list col-md-12">
-                        <div class="product-item">
-                            <div class="item-overlay">
-                                <div class="clickable">
-                                    <a href="#">Jenny Zheng</a>
-                                </div>
-                            </div>
-                            <div class="image">
-                                <a href="#"><img src="../images/Jenny.jpg" alt="Jenny" style="object-position: 85% 15%"></a>
-                            </div>
-                            <div class="caption">
-                              <div class="name">
-                                  <a href="#">Jenny Zheng</a>
-                              </div>
-                              <div class="description">
-                                  <p>Hello! I can help you with Python! I have taught many peers about Python and I can help with other coding courseworks as well!</p>
-                                  <span><strong>Skills: </strong></span>
-                                  <span class="label label-warning">Python</span>
-                              </div>
-                              <div class="rating">
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star fa-lg"></i>
-                                  <i class="fa fa-star-o fa-lg"></i>
-                              </div>
-                              <div class="price">
-                                  <span>$40/hour</span>
-                              </div>
-                              <div class="contactAndCodeup">
-                                <div class ="col-sm-1 nopadding">
-                                  <div id="100">
-                                      <span style="display:none">Joan Tso</span>
-                                      <button type="button" class="btn contact btn-success">Contact</button>
-                                  </div>
-                                </div>
-                                <div class ="col-sm-2">
-                                  <a href="code.html"><button type="button" class="btn btn-success">Code Up!</button></a>
-                                </div>
-                                <div class="socialMediaContacts">
-                                  <i href="#" class="fa fa-facebook"></i>
-                                  <i href="#" class="fa fa-skype"></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                    <!--/ Product Item -->
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
+        <br>
+        <div class="row">
+          <!-- Product Item -->
+          <div class="product-list col-md-12">
+            <div class="product-item">
+              <div class="item-overlay">
+                <div class="clickable">
+                  <a href="#">Alvis Lee</a>
+                </div>
+              </div>
+              <div class="image">
+                <a href="#"><img src="../images/WaiChun.jpg" alt="Wai Chun" style="object-position: 30% 70%"></a>
+              </div>
+              <div class="caption">
+                <div class="name">
+                  <a href="#">Alvis Lee</a>
+                </div>
+                <div class="description">
+                  <p>Hello! I am a second year student in undergraduate computing course at Imperial College London. I can teach you how to code in Java! I have 3 years experience in coding. Hope I can help you.</p>
+                  <span><strong>Skills: </strong></span>
+                  <span class="label label-warning">JAVA</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star-o fa-lg"></i>
+                </div>
+                <div class="price">
+                  <span>$40/hour</span>
+                </div>
+                <div class="contactAndCodeup">
+                  <div class="col-sm-1 nopadding">
+                    <div id="100">
+                      <span style="display:none">Alvis Lee</span>
+                      <button type="button" class="btn contact btn-success">Contact</button>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <a href="code.html"><button type="button" class="btn btn-success">Code Up!</button></a>
+                  </div>
+                  <div class="socialMediaContacts">
+                    <i href="#" class="fa fa-facebook"></i>
+                    <i href="#" class="fa fa-skype"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/ Product Item -->
 
-      <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-      <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-      <!-- Link to TutorList javascript -->
-      <script src="../js/chatbox.js"></script>
-  </body>
+          <!-- Product Item -->
+          <div class="product-list col-md-12">
+            <div class="product-item">
+              <div class="item-overlay">
+                <div class="clickable">
+                  <a href="#">Alvis Lee</a>
+                </div>
+              </div>
+              <div class="image">
+                <a href="#"><img src="../images/Joan.jpg" alt="Wai Chun" style="object-position: 80% 20%"></a>
+              </div>
+              <div class="caption">
+                <div class="name">
+                  <a href="#">Joan Tso</a>
+                </div>
+                <div class="description">
+                  <p>Hello! I have 5 years of coding experience and I am know for my debuging skills. I can teach you about basic coding and also how to develop better debuging skills. I can teach both in JAVA and Python</p>
+                  <span><strong>Skills: </strong></span>
+                  <span class="label label-warning">JAVA</span>
+                  <span class="label label-warning">Python</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star-o fa-lg"></i>
+                </div>
+                <div class="price">
+                  <span>$45/hour</span>
+                </div>
+                <div class="contactAndCodeup">
+                  <div class="col-sm-1 nopadding">
+                    <div id="100">
+                      <span style="display:none">Joan Tso</span>
+                      <button type="button" class="btn contact btn-success">Contact</button>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <a href="code.html"><button type="button" class="btn btn-success">Code Up!</button></a>
+                  </div>
+                  <div class="socialMediaContacts">
+                    <i href="#" class="fa fa-facebook"></i>
+                    <i href="#" class="fa fa-skype"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/ Product Item -->
+
+          <!-- Product Item -->
+          <div class="product-list col-md-12">
+            <div class="product-item">
+              <div class="item-overlay">
+                <div class="clickable">
+                  <a href="#">Jenny Zheng</a>
+                </div>
+              </div>
+              <div class="image">
+                <a href="#"><img src="../images/Jenny.jpg" alt="Jenny" style="object-position: 85% 15%"></a>
+              </div>
+              <div class="caption">
+                <div class="name">
+                  <a href="#">Jenny Zheng</a>
+                </div>
+                <div class="description">
+                  <p>Hello! I can help you with Python! I have taught many peers about Python and I can help with other coding courseworks as well!</p>
+                  <span><strong>Skills: </strong></span>
+                  <span class="label label-warning">Python</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star fa-lg"></i>
+                  <i class="fa fa-star-o fa-lg"></i>
+                </div>
+                <div class="price">
+                  <span>$40/hour</span>
+                </div>
+                <div class="contactAndCodeup">
+                  <div class="col-sm-1 nopadding">
+                    <div id="100">
+                      <span style="display:none">Joan Tso</span>
+                      <button type="button" class="btn contact btn-success">Contact</button>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <a href="code.html"><button type="button" class="btn btn-success">Code Up!</button></a>
+                  </div>
+                  <div class="socialMediaContacts">
+                    <i href="#" class="fa fa-facebook"></i>
+                    <i href="#" class="fa fa-skype"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/ Product Item -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <!-- Link to TutorList javascript -->
+  <script src="../js/chatbox.js"></script>
+</body>
+
 </html>

@@ -1,30 +1,23 @@
-nav {
-    background: #76b852; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-    background: -moz-linear-gradient(right, #76b852, #8DC26F);
-    background: -o-linear-gradient(right, #76b852, #8DC26F);
-    background: linear-gradient(to left, #76b852, #8DC26F);
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-#title {
-    color: white;
-    font-size: 20pt;
-}
-
-
 /* body {
   background-color: #eee;
 } */
 
 /* Two column spaces for tutor and tutee. */
 
-html { height: 100%; }
-body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  position: relative;
+  background-color: #eee;
+}
+
 /* Height / width / positioning can be customized for your use case.
    For demo purposes, we make firepad fill the entire browser. */
+
 #firepad-container1 {
   width: 50%;
   height: 100%;
@@ -52,38 +45,40 @@ body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
 }
 
 /* Two column spaces for tutor and tutee. */
+
 .column {
   flex: 50%;
-    float: left;
-    width: 50%;
-    padding-left: 20px;
-    /* resize: vertical;
+  float: left;
+  width: 50%;
+  padding-left: 20px;
+  /* resize: vertical;
     overflow: auto;*/
 }
 
 .columnx {
   flex: 30%;
-    float: left;
-    width: 50%;
-    padding-left: 20px;
-    /* resize: vertical;
+  float: left;
+  width: 50%;
+  padding-left: 20px;
+  /* resize: vertical;
     overflow: auto;*/
 }
 
 .row {
   display: flex;
   height: 300pt;
-    /* content: "";
+  /* content: "";
     clear: both; */
 }
 
 /* Two column spaces for tutor and tutee. */
+
 .column2 {
   flex: 50%;
-    float: left;
-    width: 50%;
-    padding-left: 20px;
-    /*resize: vertical;
+  float: left;
+  width: 50%;
+  padding-left: 20px;
+  /*resize: vertical;
     overflow: auto;*/
 }
 
@@ -91,7 +86,7 @@ body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
   display: flex;
   padding-top: 100px;
   padding-right: 290px;
-    /* content: "";
+  /* content: "";
     clear: both; */
 }
 
@@ -116,46 +111,57 @@ body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
 
 #whiteboard-button {
   margin-top: 10pt;
-  margin-left:10px;
+  margin-left: 10px;
   width: 250px;
   position: relative;
 }
 
 .whiteboard-container {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 5; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 5;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0);  /*Fallback color*/
-   background-color: rgba(0,0,0,0.4);  /*Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /*Fallback color*/
+  background-color: rgba(0, 0, 0, 0.4);
+  /*Black w/ opacity */
 }
 
 /* Modal Content/Box */
+
 .whiteboard-content {
-     background-color: white;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+  background-color: white;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
+
 .close {
-    z-index: 6; /* Sit on top */
-    background-color: #FFFFFF;
-    color: #aaa;
-    float: left;
-    font-size: 28px;
-    font-weight: bold;
+  z-index: 6;
+  /* Sit on top */
+  background-color: #FFFFFF;
+  color: #aaa;
+  float: left;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .whiteboard {
@@ -176,11 +182,25 @@ body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
   width: 48px;
 }
 
-.color.black { background-color: black; }
-.color.red { background-color: red; }
-.color.green { background-color: green; }
-.color.blue { background-color: blue; }
-.color.yellow { background-color: yellow; }
+.color.black {
+  background-color: black;
+}
+
+.color.red {
+  background-color: red;
+}
+
+.color.green {
+  background-color: green;
+}
+
+.color.blue {
+  background-color: blue;
+}
+
+.color.yellow {
+  background-color: yellow;
+}
 
 .navbar {
   margin-bottom: 0px;
@@ -192,10 +212,10 @@ body { margin: 0; height: 100%; position: relative;  	background-color: #eee; }
 }
 
 #tutorID {
-    display: inline;
+  display: inline;
 }
 
 @media screen and (max-width: 600px) {
-.column {
+  .column {
     width: 100%;
-}
+  }

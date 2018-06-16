@@ -1,12 +1,14 @@
 .container {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .filterDiv {
-    display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
 }
 
 /* The "show" class is added to the filtered elements */
+
 .show {
-    display: block;
+  display: block;
 }

@@ -1,34 +1,32 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
 /* Reference: https://bootsnipp.com/snippets/featured/flat-user-profile-ui */
-body
-{
-    font-family: 'Lato', 'sans-serif';
-}
-.profile
-{
-    min-height: 255px;
-    display: block;
-    margin: 50px;
+
+body {
+  font-family: 'Lato', 'sans-serif';
 }
 
-img
-{
-    max-height: 200px;
+.profile {
+  min-height: 255px;
+  display: block;
+  margin: 50px;
 }
-.profile-container
-{
+
+img {
+  max-height: 200px;
+}
+
+.profile-container {
   padding-left: 10px;
 }
-span.tags
-{
-    background: #1abc9c;
-    border-radius: 2px;
-    color: #f5f5f5;
-    font-weight: bold;
-    padding: 2px 4px;
+
+span.tags {
+  background: #1abc9c;
+  border-radius: 2px;
+  color: #f5f5f5;
+  font-weight: bold;
+  padding: 2px 4px;
 }
 
-#tutor_id
-{
-    display: inline-block;
+#tutor_id {
+  display: inline-block;
 }
