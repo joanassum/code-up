@@ -1,29 +1,32 @@
 #demoContainer {
-    position:relative;
+  position: relative;
 }
+
 #connectControls {
-    float:left;
-    margin-top:50px;
-    margin-left:10px;
-    width:250px;
-    text-align:center;
-    border: 2px solid black;
+  float: left;
+  margin-top: 50px;
+  margin-left: 10px;
+  width: 250px;
+  text-align: center;
+  border: 2px solid black;
 }
+
 #otherClients {
-    height:100px;
-    overflow-y:scroll;
+  height: 100px;
+  overflow-y: scroll;
 }
+
 #selfVideo {
-    height:200px;
-    width:250px;
-    float:left;
-    border:1px solid gray;
-    margin-left:10px;
+  height: 200px;
+  width: 250px;
+  float: left;
+  border: 1px solid gray;
+  margin-left: 10px;
 }
 
 #callerVideo {
-    height:200px;
-    width:250px;
-    border:1px solid gray;
-    margin-left:10px;
+  height: 200px;
+  width: 250px;
+  border: 1px solid gray;
+  margin-left: 10px;
 }

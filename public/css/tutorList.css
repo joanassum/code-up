@@ -1,40 +1,26 @@
-/**************************************************************************
-Navigation Bar
-***************************************************************************/
-nav {
-    background: #76b852; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-    background: -moz-linear-gradient(right, #76b852, #8DC26F);
-    background: -o-linear-gradient(right, #76b852, #8DC26F);
-    background: linear-gradient(to left, #76b852, #8DC26F);
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-#title {
-    color: white;
-    font-size: 20pt;
-}
-
 body {
-  background: white; /* fallback for old browsers */
+  background: white;
+  /* fallback for old browsers */
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
-    color: white;
-    text-align: center;
-    margin-top: 50px;
-    font-weight: bold;
-    font-size: 50pt;
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 50pt;
 }
 
 .name form button {
-    -webkit-appearance: none;
-    border: none;
-    box-shadow: none !important;
-    padding: 0;
-}:-webkit-autofill { color: #fff !important; }
+  -webkit-appearance: none;
+  border: none;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+:-webkit-autofill {
+  color: #fff !important;
+}

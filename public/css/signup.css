@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
 .login-page {
   width: 720px;
   padding: 2% 0 0;
@@ -7,7 +6,8 @@
 }
 
 body {
-  background: #76b852; /* #76b852 fallback for old browsers */
+  background: #76b852;
+  /* #76b852 fallback for old browsers */
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
   background: -moz-linear-gradient(right, #76b852, #8DC26F);
   background: -o-linear-gradient(right, #76b852, #8DC26F);
@@ -18,16 +18,17 @@ body {
 }
 
 h1 {
-    color: white;
-    text-align: center;
-    margin-top: 50px;
-    font-weight: bold;
-    font-size: 70pt;
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 70pt;
 }
 
 /*****************************************************************************
 * General Form Layout
 *****************************************************************************/
+
 .form {
   position: relative;
   z-index: 1;
@@ -40,19 +41,20 @@ h1 {
 }
 
 .column {
-    float: left;
-    width: 50%;
+  float: left;
+  width: 50%;
 }
 
 /* Clear floats after the columns */
+
 .row:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .form h4 {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 /*****************************************************************************
@@ -72,31 +74,32 @@ h1 {
 }
 
 .form textarea {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #fff;
-    width: 100%;
-    border: 1px solid #a9a9a9;
-    margin: 0 0 15px;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 14px;
-    resize: none;
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #fff;
+  width: 100%;
+  border: 1px solid #a9a9a9;
+  margin: 0 0 15px;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  resize: none;
 }
 
 #rate {
-    width: 100%;
-    margin: 0 0 15px;
-    padding: 15px;
+  width: 100%;
+  margin: 0 0 15px;
+  padding: 15px;
 }
 
 #tutor, #notTutor {
-    display: none;
+  display: none;
 }
 
 /*****************************************************************************
 * Form button Layout
 *****************************************************************************/
+
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -113,23 +116,25 @@ h1 {
   margin-top: 20px;
 }
 
-.form button:hover,.form button:active,.form button:focus {
+.form button:hover, .form button:active, .form button:focus {
   background: #43A047;
 }
 
 /*****************************************************************************
 * Select2 Layout
 *****************************************************************************/
+
 #tutor_details {
-    display: none;
+  display: none;
 }
 
 /*****************************************************************************
 * Select2 Layout
 *****************************************************************************/
+
 .select2-container {
-    width: 100% !important;
-    font-family: "Roboto", sans-serif !important;
-    font-size: 14px !important;
-    margin-bottom: 15px !important;
+  width: 100% !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 14px !important;
+  margin-bottom: 15px !important;
 }

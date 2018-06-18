@@ -1,42 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/code.css" />
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Code Mirror -->
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <!-- CodeMirror and its JavaScript mode file -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/javascript/javascript.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/code.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
 
-    <!-- Firepad -->
-    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
-    <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
-    <!-- <script src="codemirror/lib/codemirror.js"></script>
+  <!-- Code Mirror -->
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <!-- CodeMirror and its JavaScript mode file -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/javascript/javascript.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+
+  <!-- Firepad -->
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+  <script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+  <!-- <script src="codemirror/lib/codemirror.js"></script>
     <link rel="stylesheet" href="codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="codemirror/theme/eclipse.css">
     <link rel="stylesheet" href="codemirror/theme/crystal.css">
     <script src="codemirror/mode/python/python.js"></script> -->
 
-    <!-- EasyRTC -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
-    <script type="text/javascript" src="../js/demo_audio_video_simple.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/demo_audio_video_simple.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="../css/landing.css" /> -->
+  <!-- EasyRTC -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
+  <script type="text/javascript" src="../js/demo_audio_video_simple.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/demo_audio_video_simple.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="../css/landing.css" /> -->
 
-    <title>CodeUp</title>
-    <!-- <script type="text/javascript" charset="utf-8">
+  <title>CodeUp</title>
+  <!-- <script type="text/javascript" charset="utf-8">
       $(function() {
         $("#codeeditor").resizable({
             alsoResize: "#codeeditor2"});
@@ -44,16 +46,16 @@
             alsoResize: "#codeeditor"});
           });
     </script> -->
-  </head>
+</head>
 
-  <body onload="init()">
-
-
+<body onload="init()">
 
 
-<!-- Easy RTC-->
 
-      <!-- <div id="container">
+
+  <!-- Easy RTC-->
+
+  <!-- <div id="container">
         <div id="main">
           <div id="demoContainer">
               <div id="connectControls">
@@ -76,10 +78,10 @@
       </div>
     </div> -->
 
-    <% include ../partials/header %>
+  <% include ../partials/header %>
 
 
-      <div class="row" id="firepad-container">
+    <div class="row" id="firepad-container">
       <div class="column" id="firepad-container1">
         <h3>Tutee</h3>
         <select id="select-tutee">
@@ -103,33 +105,33 @@
       <div class="columnx" id="container">
         <button id="whiteboard-button">Open Whiteboard</button>
         <div id="main">
-        <!--show-->
+          <!--show-->
           <div id="demoContainer">
-              <div id="connectControls">
-                  <div id="iam">Not yet connected...</div>
-                  <br />
-                  <strong>Connected users:</strong>
-                  <div class="easyrtc_closeButton"></div>
-                  <div id="otherClients"></div>
-              </div>
-              <div id="videos">
-                  <video autoplay="autoplay" class="easyrtcMirror" id="selfVideo" muted="muted" volume="0" ></video>
-                  <div style="position:relative;float:left;">
-                    <video autoplay="autoplay" id="callerVideo"></video>
-                    <div class="easyrtc_closeButton"></div>
-                  </div>
-                <!-- each caller video needs to be in it's own div so it's close button can be positioned correctly -->
-              </div>
+            <div id="connectControls">
+              <div id="iam">Not yet connected...</div>
+              <br />
+              <strong>Connected users:</strong>
+              <div class="easyrtc_closeButton"></div>
+              <div id="otherClients"></div>
             </div>
-        <!--hide-->
+            <div id="videos">
+              <video autoplay="autoplay" class="easyrtcMirror" id="selfVideo" muted="muted" volume="0"></video>
+              <div style="position:relative;float:left;">
+                <video autoplay="autoplay" id="callerVideo"></video>
+                <div class="easyrtc_closeButton"></div>
+              </div>
+              <!-- each caller video needs to be in it's own div so it's close button can be positioned correctly -->
+            </div>
+          </div>
+          <!--hide-->
           <br style="clear:both;" />
           <hr />
-        <!-- End Main Content -->
+          <!-- End Main Content -->
+        </div>
       </div>
     </div>
-      </div>
 
-      <div class="row2" id="buttons">
+    <div class="row2" id="buttons">
       <div class="column2" id="button-container1">
         <button type="submit" value="Compile 1" id='button1'>Compile</button>
         <button type="submit" value="Save 1" id='savebutton1'>Save</button>
@@ -142,294 +144,25 @@
         <h4>Output: </h4>
         <textarea autofocus readonly id="output-box2">Compile result here&#13;&#10;Press button to try</textarea>
       </div>
-      </div>
+    </div>
 
-      <div class="whiteboard-container" id="whiteboard-container">
-        <div class="whiteboard-content">
-          <span class="close">&times;</span>
-          <canvas class="whiteboard" id="mycanvas" style="border:1px solid #000000;"></canvas>
-          <div class="colors">
-            <div class="color black"></div>
-            <div class="color red"></div>
-            <div class="color green"></div>
-            <div class="color blue"></div>
-            <div class="color yellow"></div>
-          </div>
+    <div class="whiteboard-container" id="whiteboard-container">
+      <div class="whiteboard-content">
+        <span class="close">&times;</span>
+        <canvas class="whiteboard" id="mycanvas" style="border:1px solid #000000;"></canvas>
+        <div class="colors">
+          <div class="color black"></div>
+          <div class="color red"></div>
+          <div class="color green"></div>
+          <div class="color blue"></div>
+          <div class="color yellow"></div>
         </div>
       </div>
+    </div>
 
 
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="../js/whiteboard.js"></script>
-
-      <script>
-      // Get the modal
-      var modal = document.getElementById('whiteboard-container');
-
-      // Get the button that opens the modal
-      var btn = document.getElementById("whiteboard-button");
-
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
-
-      // When the user clicks on the button, open the modal
-      btn.onclick = function() {
-        modal.style.display = "block";
-      }
-
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-      </script>
-
-      <script>
-        function init1() {
-          //// Initialize Firebase.
-          //// TODO: replace with your Firebase project configuration.
-          var config = {
-            apiKey: "AIzaSyAZCsIV66dGFDmLTA5I8XX_JycfRP0Md8E",
-            authDomain: "codeup-1264f.firebaseapp.com",
-            databaseURL: "https://codeup-1264f.firebaseio.com",
-          };
-          firebase.initializeApp(config);
-
-          //// Get Firebase Database reference.
-          var firepadRef = getExampleRef();
-
-          //// Create CodeMirror (with line numbers and the JavaScript mode).
-          var codeMirror = CodeMirror(document.getElementById('firepad-container1'), {
-            lineNumbers: true,
-            mode: 'javascript'
-          });
-          //// Create Firepad.
-          var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-            defaultText: 'public class Main{\n  public static void main(String[] args) {\n    System.out.println(\"abc\");\n  }\n}'
-          });
-
-          //get a reference to the element
-          var myBtn1 = document.getElementById('button1');
-
-          myBtn1.addEventListener('click', function(event) {
-            console.log('clicked');
-
-            var e = document.getElementById("select-tutee");
-            console.log(e.options[e.selectedIndex].value);
-
-            var data = {data: codeMirror.getValue(), lang: e.options[e.selectedIndex].value};
-            console.log(JSON.stringify(data));
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("output-box1").value = this.responseText;
-              }
-            };
-            xhttp.open("POST", "/compile", true);
-            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhttp.send(JSON.stringify(data));
-          });
-
-          var mySaveBtn1 = document.getElementById('savebutton1');
-
-          mySaveBtn1.addEventListener('click', function(event) {
-            console.log("save clicked");
-            saveTextAsFile();
-          });
-
-          // Reference : https://stackoverflow.com/questions/39075483/downloading-and-uploading-in-codemirror-textarea-and-skulpt-execution-issues
-
-          function saveTextAsFile() {
-            var textToWrite = codeMirror.getValue();
-            var textFileAsBlob = new Blob([textToWrite], {type:"text/plain;charset=utf-8"});
-            var e = document.getElementById("select-tutee");
-            var lang = e.options[e.selectedIndex].value;
-            var fileNameToSaveAs = "code.txt";
-            if (lang === "Java") {
-              fileNameToSaveAs = "code.java";
-            } else if (lang === "Python") {
-              fileNameToSaveAs = "code.py";
-            }
-
-            var downloadLink = document.createElement("a");
-            downloadLink.download = fileNameToSaveAs;
-            downloadLink.innerHTML = "Download File";
-            if (window.webkitURL != null)
-            {
-              // Chrome allows the link to be clicked
-              // without actually adding it to the DOM.
-              downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-            }
-            else
-            {
-              // Firefox requires the link to be added to the DOM
-              // before it can be clicked.
-              downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-              downloadLink.onclick = destroyClickedElement;
-              downloadLink.style.display = "none";
-              document.body.appendChild(downloadLink);
-            }
-
-            downloadLink.click();
-          }
-
-          function destroyClickedElement(event) {
-            document.body.removeChild(event.target);
-          }
-
-        }
-
-        // Helper to get hash from end of URL or generate a random one.
-        function getExampleRef() {
-          var ref = firebase.database().ref();
-          var hash = window.location.hash.replace(/#/g, '');
-          if (hash) {
-            ref = ref.child(hash);
-          } else {
-            ref = ref.push(); // generate unique location.
-            window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
-          }
-          if (typeof console !== 'undefined') {
-            console.log('Firebase data: ', ref.toString());
-          }
-          return ref;
-        }
-      </script>
-
-
-      <script>
-        function init2() {
-          //// Initialize Firebase.
-          //// TODO: replace with your Firebase project configuration.
-          var config = {
-            apiKey: "AIzaSyCjY36-Dz6ONVIKVeg4_ScJo69hZWoNpxo",
-            authDomain: "codeup2.firebaseapp.com",
-            databaseURL: "https://codeup2.firebaseio.com",
-
-          };
-          var app2 = firebase.initializeApp(config, "a");
-          console.log(app2.name);
-
-          //// Get Firebase Database reference.
-          var firepadRef = getExampleRef2(app2);
-
-          //// Create CodeMirror (with line numbers and the JavaScript mode).
-          var codeMirror = CodeMirror(document.getElementById('firepad-container2'), {
-            lineNumbers: true,
-            mode: 'javascript'
-          });
-
-          //// Create Firepad.
-          var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-            defaultText: 'public class Main{\n  public static void main(String[] args) {\n    System.out.println(\"abc\");\n  }\n}'
-          });
-
-          //get a reference to the element
-          var myBtn2 = document.getElementById('button2');
-
-          myBtn2.addEventListener('click', function(event) {
-            console.log('clicked');
-
-            var e = document.getElementById("select-tutor");
-            console.log(e.options[e.selectedIndex].value);
-
-            var data = {data: codeMirror.getValue(), lang: e.options[e.selectedIndex].value};
-            console.log(JSON.stringify(data));
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
-                document.getElementById("output-box2").value = this.responseText;
-              }
-            };
-            xhttp.open("POST", "/compile", true);
-            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhttp.send(JSON.stringify(data));
-          });
-
-
-          var mySaveBtn1 = document.getElementById('savebutton2');
-
-          mySaveBtn1.addEventListener('click', function(event) {
-              console.log("save clicked");
-              saveTextAsFile();
-          });
-
-          // Reference : https://stackoverflow.com/questions/39075483/downloading-and-uploading-in-codemirror-textarea-and-skulpt-execution-issues
-
-          function saveTextAsFile() {
-          var textToWrite = codeMirror.getValue();
-          var textFileAsBlob = new Blob([textToWrite], {type:"text/plain;charset=utf-8"});
-          var e = document.getElementById("select-tutor");
-          var lang = e.options[e.selectedIndex].value;
-          var fileNameToSaveAs = "code.txt";
-          if (lang === "Java") {
-              fileNameToSaveAs = "code.java";
-          } else if (lang === "Python") {
-              fileNameToSaveAs = "code.py";
-          }
-
-          var downloadLink = document.createElement("a");
-          downloadLink.download = fileNameToSaveAs;
-          downloadLink.innerHTML = "Download File";
-          if (window.webkitURL != null)
-          {
-              // Chrome allows the link to be clicked
-              // without actually adding it to the DOM.
-              downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-          }
-          else
-          {
-              // Firefox requires the link to be added to the DOM
-              // before it can be clicked.
-              downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-              downloadLink.onclick = destroyClickedElement;
-              downloadLink.style.display = "none";
-              document.body.appendChild(downloadLink);
-          }
-
-          downloadLink.click();
-        }
-
-        function destroyClickedElement(event) {
-            document.body.removeChild(event.target);
-        }
-
-
-        }
-
-        // Helper to get hash from end of URL or generate a random one.
-        function getExampleRef2(app) {
-          var ref = firebase.database(app).ref();
-          var hash = window.location.hash.replace(/#/g, '');
-          if (hash) {
-            ref = ref.child(hash);
-          } else {
-            ref = ref.push(); // generate unique location.
-            window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
-          }
-          if (typeof console !== 'undefined') {
-            console.log('Firebase data: ', ref.toString());
-          }
-          return ref;
-        }
-
-        function init() {
-          init1();
-          init2();
-          connect();
-        }
-      </script>
-
-
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../js/whiteboard.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -439,5 +172,6 @@
     <script src="../js/code.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+</body>
+
 </html>

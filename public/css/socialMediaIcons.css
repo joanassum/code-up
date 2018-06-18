@@ -11,7 +11,7 @@
 }
 
 .fa:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .fa-facebook {
@@ -47,13 +47,15 @@ i.icon-check:before {
 .icon-check:before { font-size: 2rem; }
 */
 
-span { line-height: 100%; }
+span {
+  line-height: 100%;
+}
 
 .nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .col-md-1half {
-    .make-md-column(1.5);
+  .make-md-column(1.5);
 }

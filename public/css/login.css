@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
 .login-page {
   width: 360px;
   padding: 2% 0 0;
@@ -45,12 +44,13 @@
   margin-top: 20px;
 }
 
-.form button:hover,.form button:active,.form button:focus {
+.form button:hover, .form button:active, .form button:focus {
   background: #43A047;
 }
 
 body {
-  background: #76b852; /* #76b852 fallback for old browsers */
+  background: #76b852;
+  /* #76b852 fallback for old browsers */
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
   background: -moz-linear-gradient(right, #76b852, #8DC26F);
   background: -o-linear-gradient(right, #76b852, #8DC26F);
@@ -61,9 +61,9 @@ body {
 }
 
 h1 {
-    color: white;
-    text-align: center;
-    margin-top: 50px;
-    font-weight: bold;
-    font-size: 70pt;
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 70pt;
 }

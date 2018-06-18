@@ -1,73 +1,82 @@
 /* Reference: https://bootsnipp.com/snippets/featured/average-user-rating-rating-breakdown
               https://bootsnipp.com/snippets/featured/expanding-review-and-rating-box */
+
 body {
   /* padding-top: 70px; */
 }
-.container {
 
-}
+.container {}
+
 .review-container {
   padding-left: 10px;
 }
-.btn-grey{
-    background-color:#D8D8D8;
-	color:#FFF;
+
+.btn-grey {
+  background-color: #D8D8D8;
+  color: #FFF;
 }
-.rating-block{
-	background-color:#FAFAFA;
-	border:1px solid #EFEFEF;
-	padding:15px 15px 20px 15px;
-	border-radius:3px;
+
+.rating-block {
+  background-color: #FAFAFA;
+  border: 1px solid #EFEFEF;
+  padding: 15px 15px 20px 15px;
+  border-radius: 3px;
   margin: 40px;
   height: 150px;
 }
-.bold{
-	font-weight:700;
-}
-.padding-bottom-7{
-	padding-bottom:7px;
+
+.bold {
+  font-weight: 700;
 }
 
-.review-block{
-	background-color:#FAFAFA;
-	border:1px solid #EFEFEF;
-	padding:15px;
-	border-radius:3px;
-	margin:40px;
+.padding-bottom-7 {
+  padding-bottom: 7px;
 }
-.review-block-name{
-	font-size:12px;
-	margin:10px 0;
+
+.review-block {
+  background-color: #FAFAFA;
+  border: 1px solid #EFEFEF;
+  padding: 15px;
+  border-radius: 3px;
+  margin: 40px;
 }
-.review-block-date{
-	font-size:12px;
+
+.review-block-name {
+  font-size: 12px;
+  margin: 10px 0;
 }
-.review-block-rate{
-	font-size:13px;
-	margin-bottom:15px;
+
+.review-block-date {
+  font-size: 12px;
 }
-.review-block-title{
-	font-size:15px;
-	font-weight:700;
-	margin-bottom:10px;
+
+.review-block-rate {
+  font-size: 13px;
+  margin-bottom: 15px;
 }
-.review-block-description{
-	font-size:13px;
+
+.review-block-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.review-block-description {
+  font-size: 13px;
 }
 
 .animated {
-    -webkit-transition: height 0.2s;
-    -moz-transition: height 0.2s;
-    transition: height 0.2s;
+  -webkit-transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  transition: height 0.2s;
 }
 
-.stars
-{
-    margin: 20px 0;
-    font-size: 24px;
-    color: #d17581;
+.stars {
+  margin: 20px 0;
+  font-size: 24px;
+  color: #d17581;
 }
 
 .form-control {
-    margin: 10px 0;
+  margin: 10px 0;
 }
