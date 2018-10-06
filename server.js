@@ -38,7 +38,7 @@ const users = {};
 
 const port = process.env.PORT || 8000;
 const ip = process.env.IP || "localhost";
-server.listen(port, ip);
+app.listen(port, ip);
 
 // Specify to serve files from the public directory
 app.use(express.static(__dirname + '/public'));
