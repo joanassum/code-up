@@ -8,7 +8,7 @@ var sslOptions = {
   cert: fs.readFileSync('cert.pem')
 };
 const httpsserver = require('https').createServer(sslOptions, app);
-httpsserver.listen(process.env.PORT || 8443);
+httpsserver.listen(8443);
 const io = require('socket.io').listen(httpsserver);
 const pg = require('pg');
 const request = require('request');
@@ -36,8 +36,9 @@ const pool = new pg.Pool({
 // A dictionary of online users
 const users = {};
 
-const port = 8000;
-server.listen(port);
+const port = process.env.PORT || 8000;
+const ip = process.env.IP || "localhost";
+server.listen(port, ip);
 
 // Specify to serve files from the public directory
 app.use(express.static(__dirname + '/public'));
