@@ -20,13 +20,18 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
+console.log(process.env.PASSWORD);
+
 // Connect to users database
 const pool = new pg.Pool({
     user: 'g1727138_u',
     host: 'db.doc.ic.ac.uk',
     database: 'g1727138_u',
-    password: 'fACG1SB1c9',
-    port: '5432'
+    password: process.env.PASSWORD,
+    port: '5432',
+    ssl: {
+      rejectUnauthorized : false
+    }
 });
 
 
@@ -63,12 +68,15 @@ app.post('/login', function(req, res){
     const query = "SELECT DISTINCT id, password FROM users WHERE id = '" + req.body.username + "'";
 
     pool.query(query, (accessErr, accessResult) => {
+        if (accessErr) {
+          console.log(accessErr);
+        }
         // If username is not in database ...
-        if (accessResult.rowCount == 0) {
+        else if (accessResult.rowCount == 0) {
             // ... Reload login page
             res.sendFile(html_dir + 'login.html');
         // If username and password is correct ...
-      } else if (accessResult.rows[0].password === req.body.password) {
+        } else if (accessResult.rows[0].password === req.body.password) {
             //... Load tutor page
             const listQuery = "SELECT * FROM tutorlist";
             pool.query(listQuery, (listErr, listResult) => {
