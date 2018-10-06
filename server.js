@@ -36,9 +36,8 @@ const pool = new pg.Pool({
 // A dictionary of online users
 const users = {};
 
-const port = process.env.PORT || 8000;
-const ip = process.env.IP || "localhost";
-app.listen(port, ip);
+const port = 8000;
+server.listen(process.env.PORT || port);
 
 // Specify to serve files from the public directory
 app.use(express.static(__dirname + '/public'));
