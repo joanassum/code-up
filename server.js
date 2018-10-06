@@ -8,7 +8,7 @@ var sslOptions = {
   cert: fs.readFileSync('cert.pem')
 };
 const httpsserver = require('https').createServer(sslOptions, app);
-httpsserver.listen(8443);
+httpsserver.listen(process.env.PORT || 8443);
 const io = require('socket.io').listen(httpsserver);
 const pg = require('pg');
 const request = require('request');
