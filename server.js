@@ -20,8 +20,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-console.log(process.env.PASSWORD);
-
 // Connect to users database
 const pool = new pg.Pool({
     user: 'g1727138_u',
